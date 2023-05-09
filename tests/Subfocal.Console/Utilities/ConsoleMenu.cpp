@@ -73,6 +73,18 @@ void ConsoleMenu::AddOption(const std::string& key, const std::string& descripti
 	_menuOptions[key] = option;
 }
 
+void ConsoleMenu::WriteLine(const std::string& line)
+{
+	std::cout << line << std::endl;
+}
+
+std::string ConsoleMenu::GetLine()
+{
+	std::string str;
+	std::cin >> str;
+	return str;
+}
+
 ConsoleMenu::~ConsoleMenu()
 {
 	auto it = _menuOptions.begin();

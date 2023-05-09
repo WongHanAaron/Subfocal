@@ -38,10 +38,10 @@ protected:
 	virtual std::string GetMenuName() = 0;
 
 	/// <summary> Read a single line from the console </summary>
-	virtual std::string GetLine() = 0;
+	virtual std::string GetLine();
 
 	/// <summary> Write a single line to the output </summary>
-	virtual void WriteLine(const std::string& line) = 0;
+	virtual void WriteLine(const std::string& line);
 
 	/// <summary> Request the user input from the console </summary>
 	std::string GetUserInput(const std::string& prompt);
