@@ -2,11 +2,14 @@
 //
 
 #include <iostream>
+#include <memory>
+#include "Menus/MainMenu.hpp"
 #include "Utilities/ConsoleMenu.hpp"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    auto menu = std::make_shared<MainMenu>();
+    menu->Run();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
