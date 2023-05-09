@@ -3,11 +3,17 @@
 
 class MainMenu : public ConsoleMenu
 {
+public:
+
+	MainMenu();
+
 protected:
 	std::string GetMenuName();
 
-	void WriteLine(std::string line);
+	void WriteLine(const std::string& line);
 
 	std::string GetLine();
+
+	void TestLog();
 };
 
