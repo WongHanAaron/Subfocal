@@ -2,12 +2,14 @@
 
 MainMenu::MainMenu()
 {
-	AddOption("T", "test", std::bind(&MainMenu::TestLog, this));
+	AddOption("R", "Read and show an image", std::bind(&MainMenu::ReadAndShowImage, this));
 }
 
 std::string MainMenu::GetMenuName() { return "Main"; }
 
-void MainMenu::TestLog()
+void MainMenu::ReadAndShowImage()
 {
-	WriteLine("I am in the test log!!!");
+	auto filepath = GetUserInput("Provide a file path to an image:");
+
+	Montage::ReadAndShow(filepath);
 }

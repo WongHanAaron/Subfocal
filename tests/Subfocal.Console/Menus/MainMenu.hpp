@@ -1,5 +1,6 @@
 #pragma once
 #include "..\Utilities\ConsoleMenu.hpp"
+#include "..\..\..\src\Subfocal.Core\Utilities\Image\Montage.hpp"
 
 class MainMenu : public ConsoleMenu
 {
@@ -10,6 +11,6 @@ public:
 protected:
 	std::string GetMenuName();
 
-	void TestLog();
+	void ReadAndShowImage();
 };
 

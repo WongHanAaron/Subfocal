@@ -18,9 +18,15 @@
     <ClInclude Include="Utilities\String.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Utilities\Image\Montage.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\String.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Image\Montage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
