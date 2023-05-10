@@ -4,6 +4,7 @@
 #include <functional>
 #include <map>
 #include <exception>
+#include "..\..\..\src\Subfocal.Core\Utilities\String.hpp"
 
 class ConsoleMenu
 {

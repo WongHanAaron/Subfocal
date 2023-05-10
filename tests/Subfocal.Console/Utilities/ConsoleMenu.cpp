@@ -9,9 +9,9 @@ void ConsoleMenu::Run()
 	{
 		PrintMenuOptions();
 
-		auto chosenOption = GetUserInput("Enter an option: ");
+		auto chosenOption = String::ToUpper(GetUserInput("Enter an option: "));
 
-		if (chosenOption == "X" || chosenOption == "x")
+		if (chosenOption == "X")
 		{
 			repeat = false;
 		}
@@ -66,7 +66,7 @@ std::string ConsoleMenu::GetUserInput(const std::string& prompt)
 void ConsoleMenu::AddOption(const std::string& key, const std::string& description, std::function<void()> method)
 {
 	auto option = std::make_shared<MenuOption>();
-	option->Key = key;
+	option->Key = String::ToUpper(key);
 	option->Description = description;
 	option->Method = method;
 
