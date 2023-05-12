@@ -39,6 +39,12 @@
     <ClInclude Include="Utilities\Logging\ContextStack.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Utilities\Environment\IScreenSizeProvider.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Environment\WindowsScreenSizeProvider.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\String.cpp">
@@ -54,6 +60,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utilities\Logging\ContextStack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Environment\WindowsScreenSizeProvider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -41,8 +41,8 @@ public:
 	void Warn(const std::string& message);
 	void Error(const std::string& message);
 
-	void Trace(const cv::Mat image, const std::string& message = "");
-	void Debug(const cv::Mat image, const std::string& message = "");
+	void Trace(const cv::Mat& image, const std::string& message = "");
+	void Debug(const cv::Mat& image, const std::string& message = "");
 
 protected:
 	/// <summary> The method for writing a logging </summary>
@@ -65,5 +65,8 @@ protected:
 
 	/// <summary> Gets the prefix given a log level </summary>
 	std::string GetPrefix(enum LogLevel level);
+
+	/// <summary> Writes the image log if the log level is enabled </summary>
+	void LogIfEnabled(enum LogLevel level, const cv::Mat& image, const std::string& message);
 };
 

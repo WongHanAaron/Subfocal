@@ -50,8 +50,15 @@ std::string Logger::GetPrefix(enum LogLevel level)
 	}
 }
 
-void Logger::Trace(const cv::Mat image, const std::string& message) { }
-void Logger::Debug(const cv::Mat image, const std::string& message) { }
+void Logger::Trace(const cv::Mat& image, const std::string& message) { }
+void Logger::Debug(const cv::Mat& image, const std::string& message) { }
+void Logger::LogIfEnabled(enum LogLevel level, const cv::Mat& image, const std::string& message)
+{
+	if (IsEnabled(level))
+	{
+		_imageLogger->Log(image, GetPrefix(level) + message);
+	}
+}
 bool Logger::IsEnabled(enum LogLevel level) 
 {
 	return (int)LogLevel >= (int)level;

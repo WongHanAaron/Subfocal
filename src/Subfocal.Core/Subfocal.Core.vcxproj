@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Algorithms\Blend\IBlend.hpp" />
+    <ClInclude Include="Utilities\Environment\IScreenSizeProvider.hpp" />
     <ClInclude Include="Utilities\Logging\ContextStack.hpp" />
     <ClInclude Include="Utilities\Environment\IDateTimeProvider.hpp" />
     <ClInclude Include="Utilities\Logging\IImageLogger.hpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Utilities\Image\Montage.hpp" />
     <ClInclude Include="Utilities\String.hpp" />
     <ClInclude Include="Utilities\Logging\WindowImageLogger.hpp" />
+    <ClInclude Include="Utilities\Environment\WindowsScreenSizeProvider.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\Logging\ContextStack.cpp" />
@@ -149,6 +151,7 @@
     <ClCompile Include="Utilities\Image\Montage.cpp" />
     <ClCompile Include="Utilities\String.cpp" />
     <ClCompile Include="Utilities\Logging\WindowImageLogger.cpp" />
+    <ClCompile Include="Utilities\Environment\WindowsScreenSizeProvider.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

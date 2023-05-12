@@ -1,4 +1,6 @@
 #pragma once
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
 #include "IImageLogger.hpp"
 
 /// <summary> Implementation of the IImageLogger that displays the image to the screen size </summary>
