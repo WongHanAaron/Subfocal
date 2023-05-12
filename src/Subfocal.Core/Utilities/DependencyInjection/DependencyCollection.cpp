@@ -7,25 +7,25 @@ DependencyCollection::DependencyCollection(std::shared_ptr<Logger> logger)
 	AddSingleton(_logger);
 }
 
-template<typename Injectable>
-std::shared_ptr<Injectable> DependencyCollection::Create()
-{
-	auto created = GetFirstSingleton<Injectable>();
-	if (created != nullptr) return created;
-	return nullptr;
-}
+//template<typename Injectable>
+//std::shared_ptr<Injectable> DependencyCollection::Create()
+//{
+//	auto created = GetFirstSingleton<Injectable>();
+//	if (created != nullptr) return created;
+//	return nullptr;
+//}
 
-template<typename Injectable>
-std::shared_ptr<Injectable> DependencyCollection::GetFirstSingleton()
-{
-	for (auto& d : _singletonDependencies)
-	{
-		auto cast = std::dynamic_pointer_cast<Injectable, IInjectable>(d);
-		if (cast != nullptr) return cast;
-	}
-
-	return nullptr;
-}
+//template<typename Injectable>
+//std::shared_ptr<Injectable> DependencyCollection::GetFirstSingleton()
+//{
+//	for (auto& d : _singletonDependencies)
+//	{
+//		auto cast = std::dynamic_pointer_cast<Injectable, IInjectable>(d);
+//		if (cast != nullptr) return cast;
+//	}
+//
+//	return nullptr;
+//}
 
 template<typename Injectable>
 void DependencyCollection::AddSingleton(std::shared_ptr<Injectable> component)

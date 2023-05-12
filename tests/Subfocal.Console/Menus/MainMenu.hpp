@@ -2,6 +2,7 @@
 #include "..\Utilities\ConsoleMenu.hpp"
 #include "..\..\..\src\Subfocal.Core\Utilities\Image\Montage.hpp"
 #include "../../../src/Subfocal.Core/Utilities/Environment/WindowsScreenSizeProvider.hpp"
+#include "../../../src/Subfocal.Core//Utilities/DependencyInjection/DependencyCollection.hpp"
 
 class MainMenu : public ConsoleMenu
 {
@@ -15,5 +16,7 @@ protected:
 	void ReadAndShowImage();
 
 	void GetScreenSize();
+
+	void DependencyInjection_Tests();
 };
 

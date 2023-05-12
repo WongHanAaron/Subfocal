@@ -3,7 +3,8 @@
 #include <vector>
 #include <string>
 #include "IInjectable.hpp"
-#include "../Logging/Logger.hpp"
+#include "..\Logging\Logger.hpp"
+#include "..\Logging\LoggerFactory.hpp"
 
 /// <summary> The collection that can have dependencies registered to it and extracted from it </summary>
 class DependencyCollection
@@ -13,8 +14,14 @@ public:
 	DependencyCollection(std::shared_ptr<Logger> logger);
 
 	/// <summary> Grabs the first dynamically castable dependency of this type </summary>
-	template<typename Injectable>
-	std::shared_ptr<Injectable> Create();
+	template<typename Injectable> inline
+	std::shared_ptr<Injectable> Create() 
+	{
+		// Needs to be inline: https://stackoverflow.com/questions/456713/why-do-i-get-unresolved-external-symbol-errors-when-using-templates
+		auto created = GetFirstSingleton<Injectable>();
+		if (created != nullptr) return created;
+		return nullptr;
+	}
 
 	/// <summary> Adds this component to the dependency collection </summary>
 	template<typename Injectable>
@@ -31,7 +38,17 @@ protected:
 	void Error(const std::string& message);
 
 	/// <summary> Grabs the first dynamically castable Singleton dependency of this type </summary>
-	template<typename Injectable>
-	std::shared_ptr<Injectable> GetFirstSingleton();
+	template<typename Injectable> inline
+	std::shared_ptr<Injectable> GetFirstSingleton() 
+	{
+		// Needs to be inline: https://stackoverflow.com/questions/456713/why-do-i-get-unresolved-external-symbol-errors-when-using-templates
+		for (auto& d : _singletonDependencies)
+		{
+			auto cast = std::dynamic_pointer_cast<Injectable, IInjectable>(d);
+			if (cast != nullptr) return cast;
+		}
+
+		return nullptr;
+	}
 };
 

@@ -4,6 +4,7 @@ MainMenu::MainMenu()
 {
 	AddOption("R", "Read and show an image", std::bind(&MainMenu::ReadAndShowImage, this));
 	AddOption("S", "Print out the screen resolution", std::bind(&MainMenu::GetScreenSize, this));
+	AddOption("D", "Test the dependency injection", std::bind(&MainMenu::DependencyInjection_Tests, this));
 }
 
 std::string MainMenu::GetMenuName() { return "Main"; }
@@ -23,4 +24,19 @@ void MainMenu::GetScreenSize()
 
 	WriteLine("Height: " + std::to_string(height));
 	WriteLine("Width: " + std::to_string(width));
+}
+
+void MainMenu::DependencyInjection_Tests()
+{
+	auto logFactory = std::make_shared<LoggerFactory>();
+	auto logger = logFactory->Create();
+	auto collection = std::make_shared<DependencyCollection>(logger);
+	auto created = collection->Create<Logger>();
+
+	created->LogLevel = LogLevel::Debug;
+	created->Trace("Trace!");
+	created->Debug("Debug!");
+	created->Info("Info!");
+	created->Warn("Warn!");
+	created->Error("Error!");
 }
