@@ -59,5 +59,11 @@ protected:
 
 	/// <summary> Checks if the passed in level is enabled for logging </summary>
 	bool IsEnabled(enum LogLevel level);
+
+	/// <summary> Writes a log with the log function if this log level is enabled </summary>
+	void LogIfEnabled(enum LogLevel level, const std::string& str);
+
+	/// <summary> Gets the prefix given a log level </summary>
+	std::string GetPrefix(enum LogLevel level);
 };
 

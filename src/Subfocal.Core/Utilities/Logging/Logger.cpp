@@ -21,12 +21,38 @@ void Logger::LeaveContext()
 
 }
 
-void Logger::Trace(const std::string& message) { }
-void Logger::Debug(const std::string& message) { }
-void Logger::Info(const std::string& message) { }
-void Logger::Warn(const std::string& message) { }
-void Logger::Error(const std::string& message) { }
+void Logger::Trace(const std::string& message) { LogIfEnabled(LogLevel::Trace, message); }
+void Logger::Debug(const std::string& message) { LogIfEnabled(LogLevel::Debug, message); }
+void Logger::Info(const std::string& message) { LogIfEnabled(LogLevel::Info, message); }
+void Logger::Warn(const std::string& message) { LogIfEnabled(LogLevel::Warn, message); }
+void Logger::Error(const std::string& message) { LogIfEnabled(LogLevel::Error, message); }
+void Logger::LogIfEnabled(enum LogLevel level, const std::string& str)
+{
+	if (IsEnabled(level)) _writeLine(GetPrefix(level) + str);
+}
+
+std::string Logger::GetPrefix(enum LogLevel level)
+{
+	switch (level)
+	{
+	case LogLevel::Trace:
+		return "Trace: ";
+	case LogLevel::Debug:
+		return "Debug: ";
+	case LogLevel::Info:
+		return "Info: ";
+	case LogLevel::Warn:
+		return "Warn: ";
+	case LogLevel::Error:
+		return "Error: ";
+	default:
+		return "";
+	}
+}
 
 void Logger::Trace(const cv::Mat image, const std::string& message) { }
 void Logger::Debug(const cv::Mat image, const std::string& message) { }
-bool Logger::IsEnabled(enum LogLevel level) { return true; }
+bool Logger::IsEnabled(enum LogLevel level) 
+{
+	return (int)LogLevel >= (int)level;
+}
