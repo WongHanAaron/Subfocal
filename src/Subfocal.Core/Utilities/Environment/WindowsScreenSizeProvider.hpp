@@ -6,7 +6,7 @@
 /// <summary>
 /// Reference: https://stackoverflow.com/questions/8690619/how-to-get-screen-resolution-in-c#comment10808434_8690619
 /// </summary>
-class WindowsScreenSizeProvider : IScreenSizeProvider
+class WindowsScreenSizeProvider : public IScreenSizeProvider
 {
 public:
 	int GetWidth();

@@ -4,6 +4,7 @@ DependencyCollection::DependencyCollection() {}
 DependencyCollection::DependencyCollection(std::shared_ptr<Logger> logger)
 {
 	_logger = logger;
+	AddSingleton(_logger);
 }
 
 template<typename Injectable>
@@ -26,9 +27,12 @@ std::shared_ptr<Injectable> DependencyCollection::GetFirstSingleton()
 	return nullptr;
 }
 
-void DependencyCollection::AddSingleton(std::shared_ptr<IInjectable> component)
+template<typename Injectable>
+void DependencyCollection::AddSingleton(std::shared_ptr<Injectable> component)
 {
-	_singletonDependencies.push_back(component);
+	auto cast = std::dynamic_pointer_cast<IInjectable>(component);
+	if (cast != nullptr)
+		_singletonDependencies.push_back(cast);
 }
 
 void DependencyCollection::Trace(const std::string& message)

@@ -5,7 +5,7 @@
 #include "../Environment/IScreenSizeProvider.hpp"
 
 /// <summary> Implementation of the IImageLogger that displays the image to the screen size </summary>
-class WindowImageLogger : IImageLogger
+class WindowImageLogger : public IImageLogger
 {
 public:
 	WindowImageLogger(std::shared_ptr<IScreenSizeProvider> screenSizeProvider);

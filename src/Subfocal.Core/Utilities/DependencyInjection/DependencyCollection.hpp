@@ -17,7 +17,10 @@ public:
 	std::shared_ptr<Injectable> Create();
 
 	/// <summary> Adds this component to the dependency collection </summary>
-	void AddSingleton(std::shared_ptr<IInjectable> component);
+	template<typename Injectable>
+	void AddSingleton(std::shared_ptr<Injectable> component);
+
+	inline int DependencyCount() { return _singletonDependencies.size(); }
 
 protected:
 	std::shared_ptr<Logger> _logger;

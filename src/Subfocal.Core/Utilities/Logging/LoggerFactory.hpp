@@ -7,9 +7,11 @@
 
 
 /// <summary> Component for creating a logger component given the dependencies or the default dependencies </summary>
-class LoggerFactory
+class LoggerFactory : public IInjectable
 {
 public: 
+	inline std::string GetComponentName() { return "LoggerFactory"; }
+
 	/// <summary> Create a logger with all default dependencies </summary>
 	std::shared_ptr<Logger> Create();
 

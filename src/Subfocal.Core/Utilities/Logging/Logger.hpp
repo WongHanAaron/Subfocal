@@ -3,6 +3,7 @@
 #include <functional>
 #include <map>
 #include <opencv2/core.hpp>
+#include "..\DependencyInjection\IInjectable.hpp"
 #include "..\Environment\IDateTimeProvider.hpp"
 #include "IImageLogger.hpp"
 #include "ContextStack.hpp"
@@ -15,7 +16,7 @@ enum LogLevel {
 	Error = 4
 };
 
-class Logger
+class Logger : public IInjectable
 {
 public:
 	Logger(std::function<void(std::string)> writeLine, 
@@ -23,6 +24,8 @@ public:
 		   std::shared_ptr<IDateTimeProvider> dateTimeProvider,
 		   std::shared_ptr<ContextStack> contextStack);
 	
+	inline std::string GetComponentName() { return "Logger"; }
+
 	/// <summary> The log level for this logger </summary>
 	LogLevel LogLevel;
 
