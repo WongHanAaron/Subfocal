@@ -17,15 +17,8 @@ public:
 		
 		if (singleton != nullptr) return singleton;
 
-		if (singleton == nullptr) throw std::invalid_argument("Unable to create dependency");
+		auto transient = GetFirstTransient<Dependable>();
 
-		auto dependable = std::dynamic_pointer_cast<IDependable, Dependable>(singleton);
-
-		if (dependable == nullptr) throw std::invalid_argument("Unable to cast dependency as a dependable");
-
-		Inject(dependable);
-
-		return singleton;
 	}
 
 	inline int DependencyCount() { return _singletonDependencies.size(); }
@@ -49,10 +42,37 @@ protected:
 		return nullptr;
 	}
 
-	template<typename Dependable> inline 
-		std::function<std::shared_ptr<IDependable>(void)> GetFirstFactory()
+	/// <summary> Create the dependable and inject its dependencies </summary>
+	template<typename Dependable> inline
+		std::function<std::shared_ptr<Dependable>(void)> ConstructTransient()
 	{
+		auto transient = GetFirstTransient<Dependable>();
 
+		if (transient == nullptr) throw std::invalid_argument("Unable to create the transient");
+
+		auto dependable = std::dynamic_pointer_cast<IDependable>(transient);
+
+		if (dependable == nullptr) throw std::invalid_argument("Unable to create dependable from the transient");
+
+		Inject(dependable);
+
+		return transient;
+	}
+
+	/// <summary> Find a transient factory matching the type and create the transient </summary>
+	template<typename Dependable> inline 
+		std::shared_ptr<Dependable> GetFirstTransient()
+	{
+		for (auto& pair : _transientFactories)
+		{
+			auto castable = pair.first;
+			auto factory = pair.second;
+			auto cast = std::dynamic_pointer_cast<Dependable, IDependable>(castable);
+			auto created = factory();
+			return std::dynamic_pointer_cast<Dependable, IDependable>(created);
+		}
+
+		return nullptr;
 	}
 
 	/// <summary> Inject the dependencies into the dependable </summary>

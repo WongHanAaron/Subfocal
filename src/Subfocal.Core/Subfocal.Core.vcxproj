@@ -153,8 +153,8 @@
     <ClInclude Include="Utilities\Environment\WindowsScreenSizeProvider.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Utilities\DependencyInjection\SubfocalProvider.cpp" />
     <ClCompile Include="Utilities\DependencyInjection\DependencyProvider.cpp" />
+    <ClCompile Include="Utilities\DependencyInjection\SubfocalProvider.cpp" />
     <ClCompile Include="Utilities\Environment\DateTimeProvider.cpp" />
     <ClCompile Include="Utilities\DependencyInjection\DependencyCollection.cpp" />
     <ClCompile Include="Utilities\Logging\ContextStack.cpp" />

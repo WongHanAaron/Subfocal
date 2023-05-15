@@ -11,5 +11,7 @@ class WindowsScreenSizeProvider : public IScreenSizeProvider
 public:
 	int GetWidth();
 	int GetHeight();
+
+	virtual std::string GetComponentName() override;
 };
 

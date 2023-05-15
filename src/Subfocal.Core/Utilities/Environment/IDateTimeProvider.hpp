@@ -1,7 +1,8 @@
 #pragma once
 #include <ctime>
+#include "..\DependencyInjection\IDependable.hpp"
 
-class IDateTimeProvider
+class IDateTimeProvider : public IDependable
 {
 public:
 

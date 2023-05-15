@@ -17,3 +17,8 @@ int WindowsScreenSizeProvider::GetHeight()
 	auto height = desktop.bottom;
 	return height;
 }
+
+std::string WindowsScreenSizeProvider::GetComponentName()
+{
+	return "WindowsScreenSizeProvider";
+}
