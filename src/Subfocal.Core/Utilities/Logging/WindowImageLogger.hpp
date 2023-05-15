@@ -8,10 +8,14 @@
 class WindowImageLogger : public IImageLogger
 {
 public:
-	WindowImageLogger(std::shared_ptr<IScreenSizeProvider> screenSizeProvider);
 
 	void Log(const cv::Mat& image, const std::string& message = "");
 
+	virtual void Inject(DependencyProvider* provider) override;
+
 protected:
 	std::shared_ptr<IScreenSizeProvider> _screenSizeProvider;
+
+	// Inherited via IImageLogger
+	virtual std::string GetComponentName() override;
 };

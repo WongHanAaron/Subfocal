@@ -28,5 +28,11 @@ void MainMenu::GetScreenSize()
 
 void MainMenu::DependencyInjection_Tests()
 {
-
+	auto provider = std::make_shared<SubfocalProvider>();
+	auto logger = provider->GetService<Logger>();
+	logger->Trace("Trace!");
+	logger->Debug("Debug!");
+	logger->Info("Info!");
+	logger->Warn("Warn!");
+	logger->Error("Error!");
 }

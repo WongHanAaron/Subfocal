@@ -2,7 +2,7 @@
 #include "..\DependencyInjection\IDependable.hpp"
 
 /// <summary> Component that will access the screen size of the current desktop </summary>
-class IScreenSizeProvider : IDependable
+class IScreenSizeProvider : public IDependable
 {
 public:
 	/// <summary> Get the width of the screen size </summary>

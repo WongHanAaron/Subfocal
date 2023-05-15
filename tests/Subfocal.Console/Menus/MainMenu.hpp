@@ -3,6 +3,7 @@
 #include "..\..\..\src\Subfocal.Core\Utilities\Image\Montage.hpp"
 #include "../../../src/Subfocal.Core/Utilities/Environment/WindowsScreenSizeProvider.hpp"
 #include "../../../src/Subfocal.Core//Utilities/DependencyInjection/DependencyCollection.hpp"
+#include "../../../src/Subfocal.Core/Utilities/DependencyInjection/SubfocalProvider.hpp"
 
 class MainMenu : public ConsoleMenu
 {

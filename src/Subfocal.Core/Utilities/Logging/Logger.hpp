@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 #include <functional>
 #include <map>
@@ -25,7 +26,7 @@ public:
 	inline std::string GetComponentName() { return "Logger"; }
 
 	/// <summary> The log level for this logger </summary>
-	LogLevel LogLevel;
+	LogLevel LogLevel = LogLevel::Debug;
 
 	/// <summary> Flag for if we should log images </summary>
 	bool ShouldLogImages;

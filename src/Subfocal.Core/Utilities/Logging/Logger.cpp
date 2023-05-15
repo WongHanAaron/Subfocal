@@ -2,6 +2,7 @@
 
 void Logger::Inject(DependencyProvider* provider)
 {
+	_writeLine = [](std::string s) { std::cout << s << std::endl; };
 	_imageLogger = provider->GetService<IImageLogger>();
 	_dateTimeProvider = provider->GetService<IDateTimeProvider>();
 	_contextStack = provider->GetService<IContextStack>();
@@ -57,5 +58,5 @@ void Logger::LogIfEnabled(enum LogLevel level, const cv::Mat& image, const std::
 }
 bool Logger::IsEnabled(enum LogLevel level) 
 {
-	return (int)LogLevel >= (int)level;
+	return (int)LogLevel <= (int)level;
 }
