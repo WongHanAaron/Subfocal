@@ -1,14 +1,10 @@
 #include "Logger.hpp"
 
-Logger::Logger(std::function<void(std::string)> writeLine, 
-	           std::shared_ptr<IImageLogger> imageLogger, 
-	           std::shared_ptr<IDateTimeProvider> dateTimeProvider,
-			   std::shared_ptr<ContextStack> contextStack)
+void Logger::Inject(DependencyProvider* provider)
 {
-	_writeLine = writeLine;
-	_imageLogger = imageLogger;
-	_dateTimeProvider = dateTimeProvider;
-	_contextStack = contextStack;
+	_imageLogger = provider->GetService<IImageLogger>();
+	_dateTimeProvider = provider->GetService<IDateTimeProvider>();
+	_contextStack = provider->GetService<IContextStack>();
 }
 
 void Logger::EnterContext(const std::string& contextName, const std::map<std::string, std::string>& context) 

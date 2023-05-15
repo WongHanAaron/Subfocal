@@ -28,15 +28,5 @@ void MainMenu::GetScreenSize()
 
 void MainMenu::DependencyInjection_Tests()
 {
-	auto logFactory = std::make_shared<LoggerFactory>();
-	auto logger = logFactory->Create();
-	auto collection = std::make_shared<DependencyCollection>(logger);
-	auto created = collection->Create<Logger>();
 
-	created->LogLevel = LogLevel::Debug;
-	created->Trace("Trace!");
-	created->Debug("Debug!");
-	created->Info("Info!");
-	created->Warn("Warn!");
-	created->Error("Error!");
 }

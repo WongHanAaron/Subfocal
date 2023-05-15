@@ -1,10 +1,11 @@
 #pragma once
-#include <string>
+#include "IDependable.hpp"
+#include "DependencyProvider.hpp"
 
-/// <summary> "Interface" that represents a class that can be injected using the dependency injection </summary>
-class IInjectable
+/// <summary> Represents a class that can be injected into </summary>
+class IInjectable : public IDependable
 {
 public:
-	/// <summary> Gets the component name for this component. This should be name that the dependency is registered at </summary>
-	virtual std::string GetComponentName() = 0;
+	/// <summary> Inject all dependencies through the dependency provider </summary>
+	virtual void Inject(DependencyProvider* provider) { }
 };

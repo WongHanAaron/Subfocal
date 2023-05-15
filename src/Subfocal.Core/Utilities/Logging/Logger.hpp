@@ -6,7 +6,7 @@
 #include "..\DependencyInjection\IInjectable.hpp"
 #include "..\Environment\IDateTimeProvider.hpp"
 #include "IImageLogger.hpp"
-#include "ContextStack.hpp"
+#include "IContextStack.hpp"
 
 enum LogLevel {
 	Trace = 0,
@@ -19,11 +19,9 @@ enum LogLevel {
 class Logger : public IInjectable
 {
 public:
-	Logger(std::function<void(std::string)> writeLine, 
-		   std::shared_ptr<IImageLogger> imageLogger, 
-		   std::shared_ptr<IDateTimeProvider> dateTimeProvider,
-		   std::shared_ptr<ContextStack> contextStack);
-	
+
+	void Inject(DependencyProvider* provider);
+
 	inline std::string GetComponentName() { return "Logger"; }
 
 	/// <summary> The log level for this logger </summary>
@@ -58,7 +56,7 @@ protected:
 	std::shared_ptr<IDateTimeProvider> _dateTimeProvider;
 
 	/// <summary> The component for storing the logging contexts in a stack </summary>
-	std::shared_ptr<ContextStack> _contextStack;
+	std::shared_ptr<IContextStack> _contextStack;
 
 	/// <summary> Checks if the passed in level is enabled for logging </summary>
 	bool IsEnabled(enum LogLevel level);

@@ -3,5 +3,8 @@
 
 class DateTimeProvider : public IDateTimeProvider
 {
+public:
+
+	std::time_t GetTimeNow();
 };
 

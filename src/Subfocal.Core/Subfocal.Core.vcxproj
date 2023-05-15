@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -135,13 +135,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Algorithms\Blend\IBlend.hpp" />
+    <ClInclude Include="Utilities\DependencyInjection\SubfocalProvider.hpp" />
+    <ClInclude Include="Utilities\DependencyInjection\DependencyProvider.hpp" />
+    <ClInclude Include="Utilities\DependencyInjection\IInjectable.hpp" />
     <ClInclude Include="Utilities\Environment\DateTimeProvider.hpp" />
     <ClInclude Include="Utilities\DependencyInjection\DependencyCollection.hpp" />
-    <ClInclude Include="Utilities\DependencyInjection\IInjectable.hpp" />
-    <ClInclude Include="Utilities\Logging\LoggerFactory.hpp" />
+    <ClInclude Include="Utilities\DependencyInjection\IDependable.hpp" />
     <ClInclude Include="Utilities\Environment\IScreenSizeProvider.hpp" />
     <ClInclude Include="Utilities\Logging\ContextStack.hpp" />
     <ClInclude Include="Utilities\Environment\IDateTimeProvider.hpp" />
+    <ClInclude Include="Utilities\Logging\IContextStack.hpp" />
     <ClInclude Include="Utilities\Logging\IImageLogger.hpp" />
     <ClInclude Include="Utilities\Logging\Logger.hpp" />
     <ClInclude Include="Utilities\Image\Montage.hpp" />
@@ -150,9 +153,10 @@
     <ClInclude Include="Utilities\Environment\WindowsScreenSizeProvider.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Utilities\DependencyInjection\SubfocalProvider.cpp" />
+    <ClCompile Include="Utilities\DependencyInjection\DependencyProvider.cpp" />
     <ClCompile Include="Utilities\Environment\DateTimeProvider.cpp" />
     <ClCompile Include="Utilities\DependencyInjection\DependencyCollection.cpp" />
-    <ClCompile Include="Utilities\Logging\LoggerFactory.cpp" />
     <ClCompile Include="Utilities\Logging\ContextStack.cpp" />
     <ClCompile Include="Utilities\Logging\Logger.cpp" />
     <ClCompile Include="Utilities\Image\Montage.cpp" />
