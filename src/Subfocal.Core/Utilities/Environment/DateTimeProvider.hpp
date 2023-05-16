@@ -1,4 +1,5 @@
 #pragma once
+#include "..\..\stdafx.h"
 #include "IDateTimeProvider.hpp"
 
 class DateTimeProvider : public IDateTimeProvider

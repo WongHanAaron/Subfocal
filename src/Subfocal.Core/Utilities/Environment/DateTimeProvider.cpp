@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "DateTimeProvider.hpp"
 
 std::time_t DateTimeProvider::GetTimeNow() 

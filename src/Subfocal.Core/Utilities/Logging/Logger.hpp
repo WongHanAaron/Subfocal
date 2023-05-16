@@ -1,9 +1,5 @@
 #pragma once
-#include <iostream>
-#include <string>
-#include <functional>
-#include <map>
-#include <opencv2/core.hpp>
+#include "..\..\stdafx.h"
 #include "..\DependencyInjection\IInjectable.hpp"
 #include "..\Environment\IDateTimeProvider.hpp"
 #include "IImageLogger.hpp"

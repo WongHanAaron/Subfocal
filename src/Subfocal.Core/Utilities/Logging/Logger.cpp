@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Logger.hpp"
 
 void Logger::Inject(DependencyProvider* provider)

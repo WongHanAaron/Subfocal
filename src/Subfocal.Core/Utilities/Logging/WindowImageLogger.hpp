@@ -1,6 +1,5 @@
 #pragma once
-#include <opencv2/core.hpp>
-#include <opencv2/highgui.hpp>
+#include "..\..\stdafx.h"
 #include "IImageLogger.hpp"
 #include "../Environment/IScreenSizeProvider.hpp"
 

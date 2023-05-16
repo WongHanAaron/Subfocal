@@ -1,4 +1,5 @@
 #pragma once
+#include "..\..\stdafx.h"
 #include "..\DependencyInjection\IDependable.hpp"
 
 /// <summary> Component that will access the screen size of the current desktop </summary>

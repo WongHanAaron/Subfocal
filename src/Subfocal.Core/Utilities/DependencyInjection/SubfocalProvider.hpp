@@ -1,4 +1,5 @@
 #pragma once
+#include "..\..\stdafx.h"
 #include "DependencyCollection.hpp"
 #include "..\Environment\DateTimeProvider.hpp"
 #include "..\Environment\WindowsScreenSizeProvider.hpp"

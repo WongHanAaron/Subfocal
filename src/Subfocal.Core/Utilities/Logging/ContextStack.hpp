@@ -1,4 +1,5 @@
 #pragma once
+#include "..\..\stdafx.h"
 #include "IContextStack.hpp"
 
 /// <summary> The class that stores the logging contexts in a stack </summary>

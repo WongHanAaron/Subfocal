@@ -1,7 +1,5 @@
 #pragma once
-#include <string>
-#include <algorithm>
-#include <cctype>
+#include "..\stdafx.h"
 
 /// <summary> A static class for all the helper methods related to strings </summary>
 class String

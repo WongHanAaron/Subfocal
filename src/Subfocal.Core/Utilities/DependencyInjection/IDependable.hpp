@@ -1,4 +1,5 @@
 #pragma once
+#include "..\..\stdafx.h"
 #include <string>
 
 /// <summary> "Interface" that represents a class that can be depended on by others and injected into using the dependency injection </summary>

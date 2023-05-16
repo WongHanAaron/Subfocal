@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Montage.hpp"
 
 cv::Mat Montage::ReadAndShow(const std::string& path)

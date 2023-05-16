@@ -1,6 +1,5 @@
 #pragma once
-#include <opencv2/core.hpp>
-#include <string>
+#include "..\..\stdafx.h"
 #include "..\DependencyInjection\IInjectable.hpp"
 
 /// <summary> The utility class for logging images </summary>

@@ -1,4 +1,5 @@
 #pragma once
+#include "..\..\stdafx.h"
 #include "IDependable.hpp"
 #include "DependencyProvider.hpp"
 
