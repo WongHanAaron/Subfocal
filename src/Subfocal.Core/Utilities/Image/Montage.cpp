@@ -36,9 +36,10 @@ std::pair<int, int> Montage::_fitCountToDimensions(int count, cv::Size maxImageS
 
 	auto equalSideLength = std::sqrt(count);
 
+	return std::make_pair(0, 0);
 }
 
-cv::Mat Montage::_makeProc(std::initializer_list<cv::Mat> images, int rows, int cols, double dividerPercentage = 0.0, int maxOutputWidth = -1, int maxOutputHeight = -1) 
+cv::Mat Montage::_makeProc(std::initializer_list<cv::Mat> images, int rows, int cols, double dividerPercentage, int maxOutputWidth, int maxOutputHeight) 
 {
 
 	return cv::Mat();
