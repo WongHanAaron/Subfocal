@@ -13,7 +13,6 @@ void MainMenu::ReadAndShowImage()
 {
 	auto filepath = GetUserInput("Provide a file path to an image:");
 
-	Montage::ReadAndShow(filepath);
 }
 
 void MainMenu::GetScreenSize()
