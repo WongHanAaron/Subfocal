@@ -28,15 +28,13 @@ cv::Size Montage::_getMaxImageSize(std::initializer_list<cv::Mat> images)
 
 std::pair<int, int> Montage::_fitCountToDimensions(int count, cv::Size maxImageSize, int maxWidth, int maxHeight)
 {
-	float aspectRatio = 1;
-	if (maxWidth >= 0 && maxHeight >= 0)
-	{
-		aspectRatio = (float)maxWidth / (float)maxHeight;
-	}
+	float equalSideLength = std::sqrt(count);
+	float aspectRatio = (float)maxWidth / (float)maxHeight;
 
-	auto equalSideLength = std::sqrt(count);
+	int columns = (int)std::ceil((equalSideLength * aspectRatio) / std::sqrt(aspectRatio));
+	int rows = (int)std::ceil((float)count / (float)columns);
 
-	return std::make_pair(0, 0);
+	return std::make_pair(columns, rows);
 }
 
 cv::Mat Montage::_makeProc(std::initializer_list<cv::Mat> images, int rows, int cols, double dividerPercentage, int maxOutputWidth, int maxOutputHeight) 

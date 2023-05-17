@@ -21,7 +21,7 @@
     <ClInclude Include="Utilities\Image\Montage.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Algorithms\Blend\IBlend.hpp">
+    <ClInclude Include="Algorithms\Composite\IComposite.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utilities\Logging\Logger.hpp">

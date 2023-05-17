@@ -142,7 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Algorithms\Blend\IBlend.hpp" />
+    <ClInclude Include="Algorithms\Composite\IComposite.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Utilities\DependencyInjection\SubfocalProvider.hpp" />
     <ClInclude Include="Utilities\DependencyInjection\DependencyProvider.hpp" />
