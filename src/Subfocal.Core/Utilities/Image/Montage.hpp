@@ -5,15 +5,15 @@ class Montage
 {
 public:
 	/// <summary> Montage together several images within the specific size </summary>
-	static cv::Mat Make(std::initializer_list<cv::Mat> images, double dividerPercentage = 0.0, int maxOutputWidth = -1, int maxOutputHeight = -1);
+	static cv::Mat Make(std::initializer_list<cv::Mat> images, int dividerPixels = 0, int maxOutputWidth = -1, int maxOutputHeight = -1, cv::Scalar dividerColor = cv::Scalar(0,0,0));
 
-
-	static cv::Size _getMaxImageSize(std::initializer_list<cv::Mat> images);
+	/// <summary> Gets the maximum image size and channel count. Returns (w, h, c) </summary>
+	static std::tuple<int,int,int> _getMaxImageSize(std::initializer_list<cv::Mat> images);
 
 	/// <summary> Get the rows and columns that would fit the counts of units within the aspect ratio of the max width and height. Assume a square if no max width or height is provided </summary>
-	static std::pair<int, int> _fitCountToDimensions(int count, cv::Size maxImageSize, int maxWidth = -1, int maxHeight = -1);
+	static std::pair<int, int> _fitCountToDimensions(int count, std::tuple<int, int, int> maxImageSize, int maxWidth = -1, int maxHeight = -1);
 
 	/// <summary> Actual method to create the montage given the rows, columns and  </summary>
-	static cv::Mat _makeProc(std::initializer_list<cv::Mat> images, int rows, int cols, double dividerPercentage = 0.0, int maxOutputWidth = -1, int maxOutputHeight = -1);
+	static cv::Mat _makeProc(std::initializer_list<cv::Mat> images, std::tuple<int, int, int> maxImageSize, int rows, int cols, int dividerPixels = 0, int maxOutputWidth = -1, int maxOutputHeight = -1, cv::Scalar dividerColor = cv::Scalar(0, 0, 0));
 };
 

@@ -6,7 +6,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace SubfocalCoreUnitTests
 {
-	TEST_CLASS(SubfocalProvider_Tests)
+	TEST_CLASS(Montage_Tests)
 	{
 	public:
 		TEST_METHOD(GetMaxImageSize_Tests)
