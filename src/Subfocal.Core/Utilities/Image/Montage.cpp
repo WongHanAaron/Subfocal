@@ -40,9 +40,36 @@ std::pair<int, int> Montage::_fitCountToDimensions(int count, std::tuple<int, in
 	return std::make_pair(columns, rows);
 }
 
-cv::Mat Montage::_makeProc(std::initializer_list<cv::Mat> images, std::tuple<int, int, int> maxImageSize, int rows, int cols, int dividerPixels, int maxOutputWidth, int maxOutputHeight, cv::Scalar dividerColor)
+cv::Mat Montage::_resizeAndConvert(cv::Mat image, cv::Size imageSize, int type)
+{
+	auto inputType = image.channels() > 3 ? CV_8UC4 :
+					  image.channels() > 1 ? CV_8UC3 : CV_8UC1;
+
+	if (type == type) return image;
+
+	cv::Mat result;
+
+	if (inputType == CV_8UC1)
+	{
+		if (type == CV_8UC3)
+		{
+			cv::cvtColor(image, result, cv::COLOR_GRAY2BGR);
+			return result;
+		}
+		else if (type == CV_8UC4)
+		{
+			cv::cvtColor(image, result, cv::COLOR_GRAY2BGRA);
+			return result;
+		}
+	}
+
+	throw std::invalid_argument("Unable to cast type of " + std::to_string(inputType) + " to " + std::to_string(type));
+}
+
+cv::Mat Montage::_makeProc(std::initializer_list<cv::Mat> images_initializer, std::tuple<int, int, int> maxImageSize, int rows, int cols, int dividerPixels, int maxOutputWidth, int maxOutputHeight, cv::Scalar dividerColor)
 {
 	// Default to using the max to define the output size
+	auto images = std::vector<cv::Mat>(images_initializer);
 	cv::Size outputSize = cv::Size(maxOutputWidth, maxOutputHeight);
 	int channelCount = std::get<2>(maxImageSize);
 	auto outputType = channelCount > 3 ? CV_8UC4 : 
@@ -71,8 +98,18 @@ cv::Mat Montage::_makeProc(std::initializer_list<cv::Mat> images, std::tuple<int
 		int currentX = 0;
 		for (int col = 0; col < cols; col++)
 		{
+			auto imageIndex = row * cols + col;
+			if (imageIndex >= images_initializer.size()) continue;
+			auto image = images[imageIndex];
+
+			auto resized = _resizeAndConvert(image, perImageSize, outputType);
+
+			returned(cv::Rect(currentX, currentY, perImageSize.width, perImageSize.height)) = resized;
 			
+			currentX += (perImageSize.width + dividerPixels);
 		}
+
+		currentY += (perImageSize.height + dividerPixels);
 	}
 
 	return returned;

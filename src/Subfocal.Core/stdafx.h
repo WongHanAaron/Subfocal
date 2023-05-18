@@ -15,3 +15,9 @@
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+
+
+// Common Utilities in Subfocal
+#include "Utilities/Image/Resize.hpp"
+#include "Utilities/Image/Montage.hpp"

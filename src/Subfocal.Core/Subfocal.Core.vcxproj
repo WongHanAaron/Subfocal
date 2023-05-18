@@ -151,6 +151,7 @@
     <ClInclude Include="Utilities\DependencyInjection\DependencyCollection.hpp" />
     <ClInclude Include="Utilities\DependencyInjection\IDependable.hpp" />
     <ClInclude Include="Utilities\Environment\IScreenSizeProvider.hpp" />
+    <ClInclude Include="Utilities\Image\Resize.hpp" />
     <ClInclude Include="Utilities\Logging\ContextStack.hpp" />
     <ClInclude Include="Utilities\Environment\IDateTimeProvider.hpp" />
     <ClInclude Include="Utilities\Logging\IContextStack.hpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="Utilities\DependencyInjection\SubfocalProvider.cpp" />
     <ClCompile Include="Utilities\Environment\DateTimeProvider.cpp" />
     <ClCompile Include="Utilities\DependencyInjection\DependencyCollection.cpp" />
+    <ClCompile Include="Utilities\Image\Resize.cpp" />
     <ClCompile Include="Utilities\Logging\ContextStack.cpp" />
     <ClCompile Include="Utilities\Logging\Logger.cpp" />
     <ClCompile Include="Utilities\Image\Montage.cpp" />

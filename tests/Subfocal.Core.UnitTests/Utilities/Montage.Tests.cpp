@@ -13,8 +13,8 @@ namespace SubfocalCoreUnitTests
 		{
 			auto size = Montage::_getMaxImageSize({cv::Mat(100, 20, CV_8UC1), cv::Mat(30, 40, CV_8UC1), cv::Mat(10, 10, CV_8UC1) });
 
-			Assert::AreEqual(100, size.height);
-			Assert::AreEqual(40, size.width);
+			Assert::AreEqual(100, std::get<0>(size));
+			Assert::AreEqual(40, std::get<1>(size));
 		}
 
 		TEST_METHOD(FitToDimensions_Tests)
@@ -32,7 +32,7 @@ namespace SubfocalCoreUnitTests
 				auto expectedColumns = std::get<3>(test);
 				auto expectedRows = std::get<4>(test);
 				
-				auto columnRowPair = Montage::_fitCountToDimensions(counts, cv::Size(1, 1), maxWidth, maxHeight);
+				auto columnRowPair = Montage::_fitCountToDimensions(counts, std::make_tuple(1,1,1), maxWidth, maxHeight);
 				
 				auto columns = columnRowPair.first;
 				auto rows = columnRowPair.second;
