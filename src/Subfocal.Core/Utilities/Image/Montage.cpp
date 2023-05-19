@@ -42,10 +42,12 @@ std::pair<int, int> Montage::_fitCountToDimensions(int count, std::tuple<int, in
 
 cv::Mat Montage::_resizeAndConvert(cv::Mat image, cv::Size imageSize, int type)
 {
-	auto inputType = image.channels() > 3 ? CV_8UC4 :
-					  image.channels() > 1 ? CV_8UC3 : CV_8UC1;
+	auto resized = Resize::ToFit(image, imageSize, true);
 
-	if (type == type) return image;
+	auto inputType = resized.channels() > 3 ? CV_8UC4 :
+					 resized.channels() > 1 ? CV_8UC3 : CV_8UC1;
+
+	if (inputType == type) return resized;
 
 	cv::Mat result;
 
@@ -53,12 +55,12 @@ cv::Mat Montage::_resizeAndConvert(cv::Mat image, cv::Size imageSize, int type)
 	{
 		if (type == CV_8UC3)
 		{
-			cv::cvtColor(image, result, cv::COLOR_GRAY2BGR);
+			cv::cvtColor(resized, result, cv::COLOR_GRAY2BGR);
 			return result;
 		}
 		else if (type == CV_8UC4)
 		{
-			cv::cvtColor(image, result, cv::COLOR_GRAY2BGRA);
+			cv::cvtColor(resized, result, cv::COLOR_GRAY2BGRA);
 			return result;
 		}
 	}

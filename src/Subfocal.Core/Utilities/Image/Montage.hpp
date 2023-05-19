@@ -13,6 +13,7 @@ public:
 	/// <summary> Get the rows and columns that would fit the counts of units within the aspect ratio of the max width and height. Assume a square if no max width or height is provided </summary>
 	static std::pair<int, int> _fitCountToDimensions(int count, std::tuple<int, int, int> maxImageSize, int maxWidth = -1, int maxHeight = -1);
 
+	/// <summary> Resize the input image and convert it to match the type required for the montage </summary>
 	static cv::Mat _resizeAndConvert(cv::Mat image, cv::Size imageSize, int type);
 
 	/// <summary> Actual method to create the montage given the rows, columns and  </summary>
