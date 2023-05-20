@@ -6,13 +6,21 @@ cv::Mat Resize::ToFit(cv::Mat image, cv::Size size, bool keepAspectRatio, cv::In
 	cv::Mat returned;
 	if (keepAspectRatio)
 	{
-		returned = cv::Mat(size, image.type());
+		auto background = image.channels() == 4 ? cv::Scalar(0, 0, 0, 0) :
+						  image.channels() == 3 ? cv::Scalar(0, 0, 0) :
+						  cv::Scalar(0);
+		returned = cv::Mat(size, image.type(), background);
 		cv::Mat resized;
 		cv::Size resizedSize;
 		auto aspectRatio = (float)image.size().width / (float)image.size().height;
 		auto outputAspectRatio = (float)size.width / (float)size.height;
 
-		if (aspectRatio > outputAspectRatio)
+		if (aspectRatio == outputAspectRatio)
+		{
+			resizedSize = cv::Size(size.width, size.height);
+			cv::resize(image, resized, resizedSize, 0.0, 0.0, interpolation);
+		}
+		else if (aspectRatio > outputAspectRatio)
 		{
 			// If the input image is wider than the output, the input image is restricted in width
 			// scale the input image by the width
@@ -34,7 +42,7 @@ cv::Mat Resize::ToFit(cv::Mat image, cv::Size size, bool keepAspectRatio, cv::In
 		int x_tl = (size.width - resizedSize.width) / 2;
 		int y_tl = (size.height - resizedSize.height) / 2;
 
-		returned(cv::Rect(x_tl, y_tl, resizedSize.width, resizedSize.height)) = resized;
+		resized.copyTo(returned(cv::Rect(x_tl, y_tl, resizedSize.width, resizedSize.height)));
 	}
 	else
 	{
