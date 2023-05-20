@@ -160,6 +160,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Models\Configurable.Tests.cpp" />
     <ClCompile Include="Utilities\Montage.Tests.cpp" />
     <ClCompile Include="Utilities\Resize.Tests.cpp" />
     <ClCompile Include="Utilities\SubfocalProvider.Tests.cpp" />
