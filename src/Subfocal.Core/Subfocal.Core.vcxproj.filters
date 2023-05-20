@@ -75,10 +75,16 @@
     <ClInclude Include="Algorithms\IAlgorithm.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Models\Configuration.hpp">
+    <ClInclude Include="Models\Configuration\Configuration.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Algorithms\BinaryComposite\CrossFade.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\Configuration\Configurable.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\Configuration\Configurer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -119,10 +125,13 @@
     <ClCompile Include="Utilities\Image\Resize.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Models\Configuration.cpp">
+    <ClCompile Include="Models\Configuration\Configuration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Algorithms\BinaryComposite\CrossFade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Models\Configuration\Configurable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

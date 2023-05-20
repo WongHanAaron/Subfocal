@@ -1,5 +1,5 @@
 #pragma once
-#include "..\stdafx.h"
+#include "..\..\stdafx.h"
 
 /// <summary> Base class used for generic configuration </summary>
 class Configuration
