@@ -19,11 +19,12 @@ namespace SubfocalCoreUnitTests
 			// 5: test_y_white
 			// 6: test_x_black
 			// 7: test_y_black
-			std::vector<std::tuple<int, int, int, int, int, int, int, int>> tests;
-			tests.push_back(std::make_tuple(100, 100, 10, 10, 5, 5, -1, -1));
-			tests.push_back(std::make_tuple(100, 100, 20, 20, 10, 10, -1, -1));
-			tests.push_back(std::make_tuple(10, 10, 20, 20, 10, 10, -1, -1));
-			tests.push_back(std::make_tuple(40, 20, 20, 20, 10, 10, 1, 1));
+			// 8: resize to fit
+			std::vector<std::tuple<int, int, int, int, int, int, int, int, bool>> tests;
+			tests.push_back(std::make_tuple(100, 100, 10, 10, 5, 5, -1, -1, true));
+			tests.push_back(std::make_tuple(100, 100, 20, 20, 10, 10, -1, -1, true));
+			tests.push_back(std::make_tuple(10, 10, 20, 20, 10, 10, -1, -1, true));
+			tests.push_back(std::make_tuple(40, 20, 20, 20, 10, 10, 1, 1, true));
 
 			bool debug = false;
 
@@ -37,12 +38,13 @@ namespace SubfocalCoreUnitTests
 				auto test_y_white = std::get<5>(test);
 				auto test_x_black = std::get<6>(test);
 				auto test_y_black = std::get<7>(test);
+				auto resizeToFit = std::get<8>(test);
 
 				auto input = cv::Mat(cv::Size(width, height), CV_8UC1, cv::Scalar(255));
 
 				auto outputSize = cv::Size(output_width, output_height);
 
-				auto resized = Resize::ToFit(input, outputSize, true);
+				auto resized = Resize::ToFit(input, outputSize, resizeToFit);
 
 				Assert::AreEqual(outputSize.width, resized.size().width);
 				Assert::AreEqual(outputSize.height, resized.size().height);

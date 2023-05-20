@@ -142,7 +142,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Algorithms\Composite\IComposite.hpp" />
+    <ClInclude Include="Algorithms\BinaryComposite\IBinaryComposite.hpp" />
+    <ClInclude Include="Algorithms\IAlgorithm.hpp" />
+    <ClInclude Include="Algorithms\BinaryComposite\CrossFade.hpp" />
+    <ClInclude Include="Models\Configuration.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Utilities\DependencyInjection\SubfocalProvider.hpp" />
     <ClInclude Include="Utilities\DependencyInjection\DependencyProvider.hpp" />
@@ -163,6 +166,8 @@
     <ClInclude Include="Utilities\Environment\WindowsScreenSizeProvider.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Algorithms\BinaryComposite\CrossFade.cpp" />
+    <ClCompile Include="Models\Configuration.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
