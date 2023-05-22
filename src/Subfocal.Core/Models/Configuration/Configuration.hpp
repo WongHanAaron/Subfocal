@@ -16,5 +16,7 @@ public:
 	/// starts with the passed in prefix
 	/// </summary>
 	Configuration GetAllStartingWith(std::string prefix);
+
+
 };
 

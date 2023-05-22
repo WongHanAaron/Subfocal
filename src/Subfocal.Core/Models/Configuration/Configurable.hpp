@@ -29,5 +29,8 @@ protected:
 	/// <summary> Configure methods for numeric configuration </summary>
 	std::map<std::string, Configurer<double>> NumericConfigurable;
 
+	/// <summary> Configure the configuration collection using the configurers and add them to the missing fields if the configuration is missing </summary>
+	template <typename Type>
+	void _configureFieldsOrAddToMissing(std::map<std::string, Type> configurations, std::map<std::string, Configurer<Type>> configurers, std::vector<std::string>& missingConfigurations);
 };
 
