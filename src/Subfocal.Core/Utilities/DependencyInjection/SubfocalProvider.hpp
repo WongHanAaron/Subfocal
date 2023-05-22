@@ -15,5 +15,8 @@ public:
 protected:
 
 	void AddLoggingDependencies();
+
+	// Inherited via DependencyCollection
+	virtual std::string GetComponentName() override;
 };
 

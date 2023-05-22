@@ -6,7 +6,7 @@
 #include <functional>
 #include "IDependable.hpp"
 
-class DependencyProvider
+class DependencyProvider : public IDependable
 {
 public:
 	/// <summary> Grabs the first dynamically castable dependency of this type </summary>

@@ -1,9 +1,9 @@
 #pragma once
 #include "..\..\stdafx.h"
-#include "..\IAlgorithm.hpp"
+#include "..\Algorithm.hpp"
 
 /// <summary> The base class for performing compositing between two images </summary>
-class IBinaryComposite : public IAlgorithm
+class IBinaryComposite : public Algorithm
 {
 public:
 	/// <summary> Method to blend two images according to their mask values </summary>

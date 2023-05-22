@@ -44,5 +44,16 @@ namespace SubfocalCoreUnitTests
 
 			Assert::IsNotNull(contextStack.get(), L"ContextStack should not be null");
 		}
+
+		TEST_METHOD(SubfocalProvider_Can_Get_IServiceProvider)
+		{
+			auto provider = std::make_shared<SubfocalProvider>();
+
+			Assert::IsNotNull(provider.get(), L"Collection created should not be null");
+
+			auto serviceProvider = provider->GetService<DependencyProvider>();
+
+			Assert::IsNotNull(serviceProvider.get(), L"ContextStack should not be null");
+		}
 	};
 }

@@ -72,7 +72,7 @@
     <ClInclude Include="Utilities\Image\Resize.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Algorithms\IAlgorithm.hpp">
+    <ClInclude Include="Algorithms\Algorithm.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Models\Configuration\Configuration.hpp">
@@ -85,6 +85,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Models\Configuration\Configurer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithms\AlgorithmFactory.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -132,6 +135,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Models\Configuration\Configurable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Algorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\AlgorithmFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
