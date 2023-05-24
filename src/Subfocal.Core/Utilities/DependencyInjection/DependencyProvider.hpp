@@ -37,6 +37,8 @@ public:
 	template<typename Dependable> inline
 		void AddSingleton(std::shared_ptr<Dependable> component)
 	{
+		if (HasSingletonInstance<Dependable>()) return;
+
 		auto cast = std::dynamic_pointer_cast<IDependable>(component);
 		if (cast != nullptr)
 		{
@@ -117,11 +119,13 @@ protected:
 		return nullptr;
 	}
 
-	/// <summary> Add factoriy </summary>
+	/// <summary> Add factory to the collection </summary>
 	template<typename Dependable> inline void AddFactory(
-		std::vector<std::pair<std::shared_ptr<IDependable>, std::function<std::shared_ptr<IDependable>(void)>>>& 
-			factoryContainer)
+		std::vector<std::pair<std::shared_ptr<IDependable>, 
+							  std::function<std::shared_ptr<IDependable>(void)>>>& factoryContainer)
 	{
+		if (HasFactoryMethod<Dependable>(factoryContainer)) return;
+
 		auto created = std::make_shared<Dependable>();
 		auto cast = std::dynamic_pointer_cast<IDependable>(created);
 		if (cast != nullptr)
@@ -135,6 +139,39 @@ protected:
 		{
 			throw std::invalid_argument("Unable to inject factory");
 		}
+	}
+
+	/// <summary> Returns if the specified type has a factory already registered </summary>
+	template <typename Dependable>
+	bool HasFactoryMethod(
+		std::vector<std::pair<std::shared_ptr<IDependable>,
+							  std::function<std::shared_ptr<IDependable>(void)>>>& factoryContainer)
+	{
+		for (auto& pair : factoryContainer)
+		{
+			auto templateType = pair.first;
+			auto cast = std::dynamic_pointer_cast<Dependable>(templateType);
+
+			if (cast != nullptr)
+				return true;
+		}
+
+		return false;
+	}
+
+	/// <summary> Returns if the specified type has a factory already registered </summary>
+	template <typename Dependable>
+	bool HasSingletonInstance()
+	{
+		for (auto& instance : _singletonDependencies)
+		{
+			auto cast = std::dynamic_pointer_cast<Dependable>(instance);
+
+			if (cast != nullptr)
+				return true;
+		}
+
+		return false;
 	}
 
 	/// <summary> Inject the dependencies into the dependable </summary>

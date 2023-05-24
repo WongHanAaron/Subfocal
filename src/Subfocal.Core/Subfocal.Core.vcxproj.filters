@@ -87,7 +87,10 @@
     <ClInclude Include="Models\Configuration\Configurer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Algorithms\AlgorithmFactory.hpp">
+    <ClInclude Include="Algorithms\AlgorithmFactoryBase.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithms\BinaryComposite\BinaryCompositeFactory.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -140,7 +143,10 @@
     <ClCompile Include="Algorithms\Algorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Algorithms\AlgorithmFactory.cpp">
+    <ClCompile Include="Algorithms\AlgorithmFactoryBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\BinaryComposite\BinaryCompositeFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -142,10 +142,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Algorithms\AlgorithmFactory.hpp" />
+    <ClInclude Include="Algorithms\AlgorithmFactoryBase.hpp" />
     <ClInclude Include="Algorithms\BinaryComposite\IBinaryComposite.hpp" />
     <ClInclude Include="Algorithms\Algorithm.hpp" />
     <ClInclude Include="Algorithms\BinaryComposite\CrossFade.hpp" />
+    <ClInclude Include="Algorithms\BinaryComposite\BinaryCompositeFactory.hpp" />
     <ClInclude Include="Models\Configuration\Configurable.hpp" />
     <ClInclude Include="Models\Configuration\Configuration.hpp" />
     <ClInclude Include="Models\Configuration\Configurer.hpp" />
@@ -169,9 +170,10 @@
     <ClInclude Include="Utilities\Environment\WindowsScreenSizeProvider.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Algorithms\AlgorithmFactory.cpp" />
+    <ClCompile Include="Algorithms\AlgorithmFactoryBase.cpp" />
     <ClCompile Include="Algorithms\Algorithm.cpp" />
     <ClCompile Include="Algorithms\BinaryComposite\CrossFade.cpp" />
+    <ClCompile Include="Algorithms\BinaryComposite\BinaryCompositeFactory.cpp" />
     <ClCompile Include="Models\Configuration\Configurable.cpp" />
     <ClCompile Include="Models\Configuration\Configuration.cpp" />
     <ClCompile Include="stdafx.cpp">
