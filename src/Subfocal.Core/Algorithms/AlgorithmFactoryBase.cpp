@@ -20,3 +20,21 @@ void AlgorithmFactoryBase::Inject(DependencyProvider* provider)
 	}
 }
 
+bool AlgorithmFactoryBase::HasAlgorithm(const std::string& algorithmName)
+{
+	auto search = _algorithmToCreationMethod.find(algorithmName);
+	return search != _algorithmToCreationMethod.end();
+}
+
+std::vector<std::string> AlgorithmFactoryBase::GetAvailableAlgorithms()
+{
+	auto returned = std::vector<std::string>();
+
+	for (auto& a : _algorithmToCreationMethod)
+	{
+		returned.push_back(a.first);
+	}
+
+	return returned;
+}
+

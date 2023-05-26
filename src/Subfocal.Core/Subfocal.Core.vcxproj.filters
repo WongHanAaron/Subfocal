@@ -93,6 +93,9 @@
     <ClInclude Include="Algorithms\BinaryComposite\BinaryCompositeFactory.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Algorithms\SubfocalAlgorithmFactory.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\String.cpp">
@@ -147,6 +150,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Algorithms\BinaryComposite\BinaryCompositeFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\SubfocalAlgorithmFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

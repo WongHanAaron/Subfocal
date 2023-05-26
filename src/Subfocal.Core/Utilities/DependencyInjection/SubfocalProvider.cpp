@@ -24,7 +24,7 @@ void SubfocalProvider::AddLoggingDependencies()
 
 void SubfocalProvider::AddAlgorithmFactories()
 {
-	DependencyProvider::AddSingleton<BinaryCompositeFactory>();
+	DependencyProvider::AddSingleton<SubfocalAlgorithmFactory>();
 }
 
 std::string SubfocalProvider::GetComponentName()

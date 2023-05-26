@@ -151,6 +151,7 @@
     <ClInclude Include="Models\Configuration\Configuration.hpp" />
     <ClInclude Include="Models\Configuration\Configurer.hpp" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Algorithms\SubfocalAlgorithmFactory.hpp" />
     <ClInclude Include="Utilities\DependencyInjection\SubfocalProvider.hpp" />
     <ClInclude Include="Utilities\DependencyInjection\DependencyProvider.hpp" />
     <ClInclude Include="Utilities\DependencyInjection\IInjectable.hpp" />
@@ -186,6 +187,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="Algorithms\SubfocalAlgorithmFactory.cpp" />
     <ClCompile Include="Utilities\DependencyInjection\DependencyProvider.cpp" />
     <ClCompile Include="Utilities\DependencyInjection\SubfocalProvider.cpp" />
     <ClCompile Include="Utilities\Environment\DateTimeProvider.cpp" />
