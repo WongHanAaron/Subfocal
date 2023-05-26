@@ -30,6 +30,9 @@
     <ClCompile Include="Models\Configurable.Tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Algorithms\BinaryCompositeFactory.Tests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">

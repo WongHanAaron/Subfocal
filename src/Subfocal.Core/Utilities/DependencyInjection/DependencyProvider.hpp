@@ -13,7 +13,6 @@ public:
 	template<typename Dependable> inline
 		std::shared_ptr<Dependable> GetService()
 	{
-		// Needs to be inline: https://stackoverflow.com/questions/456713/why-do-i-get-unresolved-external-symbol-errors-when-using-templates
 		auto singleton = GetFirstSingleton<Dependable>();
 		
 		if (singleton != nullptr) return singleton;
@@ -60,6 +59,18 @@ public:
 		void AddTransient()
 	{
 		AddFactory<Dependable>(_transientFactories);
+	}
+
+	void AddTransientFactory(std::function<std::shared_ptr<IDependable>(void)> dependencyFactory)
+	{
+		auto templateInstance = dependencyFactory();
+		_transientFactories.push_back(std::make_pair(templateInstance, dependencyFactory));
+	}
+
+	void AddSingletonFactory(std::function<std::shared_ptr<IDependable>(void)> dependencyFactory)
+	{
+		auto templateInstance = dependencyFactory();
+		_singletonFactories.push_back(std::make_pair(templateInstance, dependencyFactory));
 	}
 
 protected:

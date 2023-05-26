@@ -8,9 +8,6 @@ public:
 	/// <summary> Create an algorithm based on the name and passed in configuration </summary>
 	virtual std::shared_ptr<Algorithm> Create(const std::string& algorithmName, Configuration config);
 
-	/// <summary> Registers the algorithms at this factory to the dependency provider </summary>
-	virtual void RegisterAlgorithms(DependencyProvider* provider) = 0;
-
 	/// <summary> Injected required dependencies for the factory to work </summary>
 	virtual void Inject(DependencyProvider* provider) override;
 
@@ -20,7 +17,9 @@ public:
 	}
 
 protected:
-	std::map<std::string, std::function<std::shared_ptr<Algorithm>(void)>> _algorithmToCreationMethod;
+	std::map<std::string, std::pair<std::shared_ptr<Algorithm>, std::function<std::shared_ptr<Algorithm>(void)>>> _algorithmToCreationMethod;
+
+	std::vector<std::function<std::shared_ptr<IDependable>(void)>> _algorithmTransientCreationMethod;
 
 	std::shared_ptr<DependencyProvider> _dependencyProvider;
 	
@@ -34,20 +33,32 @@ protected:
 		if (algorithm == nullptr)
 			throw std::invalid_argument("The passed in type cannot be cast as an Algorithm");
 		
-		_algorithmToCreationMethod[algorithm->GetComponentName()] =
-		[this]() -> std::shared_ptr<Algorithm> 
+		_algorithmToCreationMethod[algorithm->GetComponentName()] = 
+			std::make_pair(algorithm,
+							[this]() -> std::shared_ptr<Algorithm> 
+							{
+								if (this->GetProvider() == nullptr) throw std::invalid_argument("No dependency provider was injected into factory");
+
+								auto typedAlgorithm = this->GetProvider()->GetService<AlgorithmType>();
+
+								auto algorithm = std::dynamic_pointer_cast<Algorithm>(typedAlgorithm);
+
+								if (algorithm == nullptr)
+									throw std::invalid_argument("The passed in type cannot be cast as an Algorithm");
+
+								return algorithm;
+							});
+
+		_algorithmTransientCreationMethod.push_back([]() -> std::shared_ptr<IDependable>
 		{
-			if (this->GetProvider() == nullptr) throw std::invalid_argument("No dependency provider was injected into factory");
+			auto algorithm = std::make_shared<AlgorithmType>();
 
-			auto typedAlgorithm = this->GetProvider()->GetService<AlgorithmType>();
+			auto dependable = std::dynamic_pointer_cast<IDependable>(algorithm);
 
-			auto algorithm = std::dynamic_pointer_cast<Algorithm>(typedAlgorithm);
+			if (dependable == nullptr)
+				throw std::invalid_argument("Unable to cast Algorithm as IDependable");
 
-			if (algorithm == nullptr)
-				throw std::invalid_argument("The passed in type cannot be cast as an Algorithm");
-
-			return algorithm;
-
-		};
+			return dependable;
+		});
 	}
 };

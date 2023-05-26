@@ -5,3 +5,8 @@ BinaryCompositeFactory::BinaryCompositeFactory()
 {
 	_addAlgorithmFactory<CrossFade>();
 }
+
+std::string BinaryCompositeFactory::GetComponentName()
+{
+	return "BinaryCompositeFactory";
+}

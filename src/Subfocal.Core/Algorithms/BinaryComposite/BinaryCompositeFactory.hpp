@@ -7,5 +7,6 @@ class BinaryCompositeFactory : public AlgorithmFactoryBase
 public:
 	BinaryCompositeFactory();
 
+	virtual std::string GetComponentName() override;
 };
 
