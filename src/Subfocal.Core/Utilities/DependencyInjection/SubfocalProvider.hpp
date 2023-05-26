@@ -13,6 +13,16 @@ class SubfocalProvider : public DependencyCollection
 public:
 	SubfocalProvider();
 
+	/// <summary> Perform post constructor initialization that needs to occur after the constructor </summary>
+	void CompleteConstruction();
+
+	inline static std::shared_ptr<SubfocalProvider> Create()
+	{
+		auto c = std::make_shared<SubfocalProvider>();
+		c->CompleteConstruction();
+		return c;
+	}
+
 protected:
 
 	void AddLoggingDependencies();

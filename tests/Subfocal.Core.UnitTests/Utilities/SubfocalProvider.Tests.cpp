@@ -14,7 +14,7 @@ namespace SubfocalCoreUnitTests
 		
 		TEST_METHOD(SubfocalProvider_Creates_IDateTimeProvider)
 		{
-			auto provider = std::make_shared<SubfocalProvider>();
+			auto provider = SubfocalProvider::Create();
 
 			Assert::IsNotNull(provider.get(), L"Collection created should not be null");
 
@@ -25,7 +25,7 @@ namespace SubfocalCoreUnitTests
 
 		TEST_METHOD(SubfocalProvider_Creates_IScreenSizeProvider)
 		{
-			auto provider = std::make_shared<SubfocalProvider>();
+			auto provider = SubfocalProvider::Create();
 
 			Assert::IsNotNull(provider.get(), L"Collection created should not be null");
 
@@ -36,7 +36,7 @@ namespace SubfocalCoreUnitTests
 
 		TEST_METHOD(SubfocalProvider_Creates_IContextStack)
 		{
-			auto provider = std::make_shared<SubfocalProvider>();
+			auto provider = SubfocalProvider::Create();
 
 			Assert::IsNotNull(provider.get(), L"Collection created should not be null");
 
@@ -47,7 +47,7 @@ namespace SubfocalCoreUnitTests
 
 		TEST_METHOD(SubfocalProvider_Can_Get_IServiceProvider)
 		{
-			auto provider = std::make_shared<SubfocalProvider>();
+			auto provider = SubfocalProvider::Create();
 
 			Assert::IsNotNull(provider.get(), L"Collection created should not be null");
 

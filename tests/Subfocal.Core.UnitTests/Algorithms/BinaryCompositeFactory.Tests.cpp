@@ -13,7 +13,7 @@ namespace SubfocalCoreUnitTests
 
 		TEST_METHOD(BinaryCompositeFactory_Creation_Tests)
 		{
-			auto provider = std::make_shared<SubfocalProvider>();
+			auto provider = SubfocalProvider::Create();
 
 			auto factory = provider->GetService<BinaryCompositeFactory>();
 

@@ -39,7 +39,9 @@ protected:
 							{
 								if (this->GetProvider() == nullptr) throw std::invalid_argument("No dependency provider was injected into factory");
 
-								auto typedAlgorithm = this->GetProvider()->GetService<AlgorithmType>();
+								auto provider = this->GetProvider();
+
+								auto typedAlgorithm = provider->GetService<AlgorithmType>();
 
 								auto algorithm = std::dynamic_pointer_cast<Algorithm>(typedAlgorithm);
 

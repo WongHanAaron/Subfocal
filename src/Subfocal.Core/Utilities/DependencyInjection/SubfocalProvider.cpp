@@ -3,9 +3,13 @@
 
 SubfocalProvider::SubfocalProvider()
 {
-	DependencyProvider::AddSingleton(std::make_shared<SubfocalProvider>(*this));
 	AddLoggingDependencies();
 	AddAlgorithmFactories();
+}
+
+void SubfocalProvider::CompleteConstruction()
+{
+	DependencyProvider::AddSingleton(shared_from_base<SubfocalProvider>());
 }
 
 
