@@ -4,6 +4,7 @@
 #include "../../../src/Subfocal.Core/Utilities/Environment/WindowsScreenSizeProvider.hpp"
 #include "../../../src/Subfocal.Core//Utilities/DependencyInjection/DependencyCollection.hpp"
 #include "../../../src/Subfocal.Core/Utilities/DependencyInjection/SubfocalProvider.hpp"
+#include "BinaryCompositeMenu.hpp"
 
 class MainMenu : public ConsoleMenu
 {
@@ -19,5 +20,7 @@ protected:
 	void GetScreenSize();
 
 	void DependencyInjection_Tests();
+
+	void RunBinaryCompositeMenu();
 };
 

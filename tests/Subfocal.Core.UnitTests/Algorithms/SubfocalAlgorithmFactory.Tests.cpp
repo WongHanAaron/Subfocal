@@ -25,7 +25,7 @@ namespace SubfocalCoreUnitTests
 
 			Assert::IsNotNull(algorithm.get());
 
-			auto typedAlgorithm = std::dynamic_pointer_cast<AlgorithmFactoryBase>(factory)->Create<CrossFade>("CrossFade", c);
+			auto typedAlgorithm = factory->Create<CrossFade>("CrossFade", c);
 
 			Assert::IsNotNull(typedAlgorithm.get());
 		}

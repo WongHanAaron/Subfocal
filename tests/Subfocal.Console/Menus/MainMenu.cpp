@@ -5,6 +5,7 @@ MainMenu::MainMenu()
 	AddOption("R", "Read and show an image", std::bind(&MainMenu::ReadAndShowImage, this));
 	AddOption("S", "Print out the screen resolution", std::bind(&MainMenu::GetScreenSize, this));
 	AddOption("D", "Test the dependency injection", std::bind(&MainMenu::DependencyInjection_Tests, this));
+	AddOption("B", "BinaryComposite Menu", std::bind(&MainMenu::PrintMenuOptions, this));
 }
 
 std::string MainMenu::GetMenuName() { return "Main"; }
@@ -34,4 +35,11 @@ void MainMenu::DependencyInjection_Tests()
 	logger->Info("Info!");
 	logger->Warn("Warn!");
 	logger->Error("Error!");
+}
+
+void MainMenu::RunBinaryCompositeMenu()
+{
+	auto menu = std::make_shared<BinaryCompositeMenu>();
+
+	menu->Run();
 }

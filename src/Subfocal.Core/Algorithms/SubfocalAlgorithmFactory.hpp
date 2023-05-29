@@ -8,6 +8,18 @@ class SubfocalAlgorithmFactory : public AlgorithmFactoryBase
 public:
 	SubfocalAlgorithmFactory();
 
+	/// <summary> Create and cast the algorithm </summary>
+	template<typename AlgorithmType>
+	inline std::shared_ptr<AlgorithmType> Create(const std::string& algorithmName, Configuration config)
+	{
+		auto created = Create(algorithmName, config);
+		auto cast = std::dynamic_pointer_cast<AlgorithmType>(created);
+
+		if (cast == nullptr) throw std::invalid_argument("Unable to create and cast algorithm '" + algorithmName + "'");
+
+		return cast;
+	}
+
 	/// <summary> Create an algorithm based on the name and passed in configuration </summary>
 	virtual std::shared_ptr<Algorithm> Create(const std::string& algorithmName, Configuration config) override;
 
