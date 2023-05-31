@@ -17,6 +17,6 @@ public:
 	static cv::Mat _resizeAndConvert(cv::Mat image, cv::Size imageSize, int type);
 
 	/// <summary> Actual method to create the montage given the rows, columns and  </summary>
-	static cv::Mat _makeProc(std::initializer_list<cv::Mat> images, std::tuple<int, int, int> maxImageSize, int rows, int cols, int dividerPixels = 0, int maxOutputWidth = -1, int maxOutputHeight = -1, cv::Scalar dividerColor = cv::Scalar(0, 0, 0));
+	static cv::Mat _makeProc(std::initializer_list<cv::Mat> images, std::tuple<int, int, int> maxImageSize, int cols, int rows, int dividerPixels = 0, int maxOutputWidth = -1, int maxOutputHeight = -1, cv::Scalar dividerColor = cv::Scalar(0, 0, 0));
 };
 

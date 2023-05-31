@@ -68,7 +68,7 @@ cv::Mat Montage::_resizeAndConvert(cv::Mat image, cv::Size imageSize, int type)
 	throw std::invalid_argument("Unable to cast type of " + std::to_string(inputType) + " to " + std::to_string(type));
 }
 
-cv::Mat Montage::_makeProc(std::initializer_list<cv::Mat> images_initializer, std::tuple<int, int, int> maxImageSize, int rows, int cols, int dividerPixels, int maxOutputWidth, int maxOutputHeight, cv::Scalar dividerColor)
+cv::Mat Montage::_makeProc(std::initializer_list<cv::Mat> images_initializer, std::tuple<int, int, int> maxImageSize, int cols, int rows, int dividerPixels, int maxOutputWidth, int maxOutputHeight, cv::Scalar dividerColor)
 {
 	// Default to using the max to define the output size
 	auto images = std::vector<cv::Mat>(images_initializer);
@@ -106,7 +106,7 @@ cv::Mat Montage::_makeProc(std::initializer_list<cv::Mat> images_initializer, st
 
 			auto resized = _resizeAndConvert(image, perImageSize, outputType);
 
-			returned(cv::Rect(currentX, currentY, perImageSize.width, perImageSize.height)) = resized;
+			resized.copyTo(returned(cv::Rect(currentX, currentY, perImageSize.width, perImageSize.height)));
 			
 			currentX += (perImageSize.width + dividerPixels);
 		}

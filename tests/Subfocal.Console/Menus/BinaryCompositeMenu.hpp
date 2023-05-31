@@ -8,5 +8,8 @@ public:
 	BinaryCompositeMenu();
 
 	void CrossFadeTest();
+
+	// Inherited via ConsoleMenu
+	virtual std::string GetMenuName() override;
 };
 

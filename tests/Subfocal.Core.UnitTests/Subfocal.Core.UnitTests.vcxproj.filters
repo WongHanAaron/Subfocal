@@ -36,7 +36,7 @@
     <ClCompile Include="Algorithms\SubfocalAlgorithmFactory.Tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Algorithms\CrossFade.Tests.cpp">
+    <ClCompile Include="Algorithms\BinaryComposite.Tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

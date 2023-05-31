@@ -24,12 +24,18 @@
     <ClCompile Include="Menus\MainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Menus\BinaryCompositeMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\ConsoleMenu.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Menus\MainMenu.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menus\BinaryCompositeMenu.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
