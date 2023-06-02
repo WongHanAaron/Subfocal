@@ -9,5 +9,9 @@
 
 // add headers that you want to pre-compile here
 #include <tuple>
+#include <map>
+#include <vector>
+
+#include "..\..\src\Subfocal.Core\stdafx.h"
 
 #endif //PCH_H

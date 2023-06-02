@@ -164,11 +164,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Algorithms\BinaryCompositeFactory.Tests.cpp" />
     <ClCompile Include="Algorithms\SubfocalAlgorithmFactory.Tests.cpp" />
     <ClCompile Include="Algorithms\BinaryComposite.Tests.cpp" />
     <ClCompile Include="Models\Configurable.Tests.cpp" />
     <ClCompile Include="Utilities\Montage.Tests.cpp" />
+    <ClCompile Include="Utilities\Normalize.Tests.cpp" />
     <ClCompile Include="Utilities\Resize.Tests.cpp" />
     <ClCompile Include="Utilities\SubfocalProvider.Tests.cpp" />
     <ClCompile Include="pch.cpp">

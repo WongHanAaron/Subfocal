@@ -20,12 +20,15 @@ cv::Mat CrossFade::Composite(const cv::Mat& image1, const cv::Mat& image2, const
 
 cv::Mat CrossFade::_getKernel(int width)
 {
+	auto size = cv::Size(width + 2, width + 2);
 
-	return cv::Mat();
-}
+	auto mask = cv::Mat(size, CV_8UC1, cv::Scalar(0));
 
-cv::Mat CrossFade::_get1DKernel(int width)
-{
+	cv::circle(mask, cv::Point(size.width / 2, size.height / 2), width / 2, cv::Scalar(255), -1);
+	cv::Mat kernel;
+	cv::distanceTransform(mask, kernel, cv::DistanceTypes::DIST_C, 3, CV_32F);
 
-	return cv::Mat(width, 1, CV_32FC1);
+
+
+	return mask;
 }

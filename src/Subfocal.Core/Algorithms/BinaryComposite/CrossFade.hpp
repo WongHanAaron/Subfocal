@@ -13,9 +13,6 @@ public:
 	/// <summary> Get the normalized kernel to cross fade the mask </summary>
 	cv::Mat _getKernel(int width);
 
-	/// <summary> Get the 1D kernel </summary>
-	cv::Mat _get1DKernel(int width);
-
 	/// <summary> The width of the cross fade applied </summary>
 	int Width;
 };

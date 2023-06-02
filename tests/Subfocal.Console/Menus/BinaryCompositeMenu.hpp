@@ -9,7 +9,8 @@ public:
 
 	void CrossFadeTest();
 
-	// Inherited via ConsoleMenu
 	virtual std::string GetMenuName() override;
+
+	std::tuple<cv::Mat, cv::Mat, cv::Mat> LoadFruitImages();
 };
 

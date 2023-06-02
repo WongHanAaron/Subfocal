@@ -154,6 +154,7 @@
     <ClInclude Include="Models\Configuration\Configurable.hpp" />
     <ClInclude Include="Models\Configuration\Configuration.hpp" />
     <ClInclude Include="Models\Configuration\Configurer.hpp" />
+    <ClInclude Include="Utilities\Image\Normalize.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Algorithms\SubfocalAlgorithmFactory.hpp" />
     <ClInclude Include="Utilities\DependencyInjection\SubfocalProvider.hpp" />
@@ -181,6 +182,7 @@
     <ClCompile Include="Algorithms\BinaryComposite\BinaryCompositeFactory.cpp" />
     <ClCompile Include="Models\Configuration\Configurable.cpp" />
     <ClCompile Include="Models\Configuration\Configuration.cpp" />
+    <ClCompile Include="Utilities\Image\Normalize.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
