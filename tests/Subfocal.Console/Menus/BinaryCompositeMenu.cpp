@@ -14,7 +14,10 @@ void BinaryCompositeMenu::CrossFadeTest()
 	auto imageLogger = provider->GetService<IImageLogger>();
 
 	auto config = Configuration();
-	config.Numeric["width"] = 10;
+	config.Numeric["width"] = 100;
+
+	auto logger = provider->GetService<Logger>();
+	logger->LogLevel = LogLevel::Trace;
 
 	auto crossFade = factory->Create<CrossFade>("CrossFade", config);
 	

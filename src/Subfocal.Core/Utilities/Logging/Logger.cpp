@@ -48,8 +48,26 @@ std::string Logger::GetPrefix(enum LogLevel level)
 	}
 }
 
-void Logger::Trace(const cv::Mat& image, const std::string& message) { }
-void Logger::Debug(const cv::Mat& image, const std::string& message) { }
+void Logger::Trace(const cv::Mat& image, const std::string& message) 
+{
+	LogIfEnabled(LogLevel::Trace, image, message);
+}
+
+void Logger::Debug(const cv::Mat& image, const std::string& message) 
+{
+	LogIfEnabled(LogLevel::Debug, image, message);
+}
+
+void Logger::Trace(std::initializer_list<cv::Mat> images, const std::string& message)
+{
+	LogIfEnabled(LogLevel::Trace, images, message);
+}
+
+void Logger::Debug(std::initializer_list<cv::Mat> images, const std::string& message)
+{
+	LogIfEnabled(LogLevel::Debug, images, message);
+}
+
 void Logger::LogIfEnabled(enum LogLevel level, const cv::Mat& image, const std::string& message)
 {
 	if (IsEnabled(level))
@@ -57,6 +75,15 @@ void Logger::LogIfEnabled(enum LogLevel level, const cv::Mat& image, const std::
 		_imageLogger->Log(image, GetPrefix(level) + message);
 	}
 }
+
+void Logger::LogIfEnabled(enum LogLevel level, std::initializer_list<cv::Mat> images, const std::string& message)
+{
+	if (IsEnabled(level))
+	{
+		_imageLogger->Log(images, GetPrefix(level) + message);
+	}
+}
+
 bool Logger::IsEnabled(enum LogLevel level) 
 {
 	return (int)LogLevel <= (int)level;

@@ -1,5 +1,6 @@
 #pragma once
 #include "..\..\stdafx.h"
+#include "..\..\Models\Configuration\Configurable.hpp"
 #include "..\DependencyInjection\IInjectable.hpp"
 #include "..\Environment\IDateTimeProvider.hpp"
 #include "IImageLogger.hpp"
@@ -13,7 +14,7 @@ enum LogLevel {
 	Error = 4
 };
 
-class Logger : public IInjectable
+class Logger : public Configurable
 {
 public:
 
@@ -33,6 +34,9 @@ public:
 	/// <summary> Leave the most recent context </summary>
 	void LeaveContext();
 
+	/// <summary> Checks if the passed in level is enabled for logging </summary>
+	bool IsEnabled(enum LogLevel level);
+
 	void Trace(const std::string& message);
 	void Debug(const std::string& message);
 	void Info(const std::string& message);
@@ -41,6 +45,9 @@ public:
 
 	void Trace(const cv::Mat& image, const std::string& message = "");
 	void Debug(const cv::Mat& image, const std::string& message = "");
+
+	void Trace(std::initializer_list<cv::Mat> images, const std::string& message = "");
+	void Debug(std::initializer_list<cv::Mat> images, const std::string& message = "");
 
 protected:
 	/// <summary> The method for writing a logging </summary>
@@ -55,9 +62,6 @@ protected:
 	/// <summary> The component for storing the logging contexts in a stack </summary>
 	std::shared_ptr<IContextStack> _contextStack;
 
-	/// <summary> Checks if the passed in level is enabled for logging </summary>
-	bool IsEnabled(enum LogLevel level);
-
 	/// <summary> Writes a log with the log function if this log level is enabled </summary>
 	void LogIfEnabled(enum LogLevel level, const std::string& str);
 
@@ -66,5 +70,8 @@ protected:
 
 	/// <summary> Writes the image log if the log level is enabled </summary>
 	void LogIfEnabled(enum LogLevel level, const cv::Mat& image, const std::string& message);
+
+	/// <summary> Writes the image collection log if the log level is enabled </summary>
+	void LogIfEnabled(enum LogLevel level, std::initializer_list<cv::Mat> images, const std::string& message);
 };
 

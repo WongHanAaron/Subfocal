@@ -26,11 +26,35 @@ cv::Mat CrossFade::Composite(const cv::Mat& image1, const cv::Mat& image2, const
 		cv::cvtColor(mask, mask, cv::COLOR_BGR2GRAY);
 	}
 
-	cv::filter2D(mask1, fadedMask, CV_32FC1, kernel);
+	cv::filter2D(mask, fadedMask, CV_32FC1, kernel);
+
+	if (_logger->IsEnabled(LogLevel::Trace))
+		_logger->Trace({ mask, Normalize::Linear(kernel, 0.0, 255.0), fadedMask }, "mask, kernel, fadedMask");
 
 	fadedMask = fadedMask / 255.0f;
 
-	cv::Mat mergedF = image1F * fadedMask + image2F * (1.0f - fadedMask);
+	if (image1F.channels() == 3)
+	{
+		cv::Mat output;
+		std::vector<cv::Mat> toMerge;
+		toMerge.push_back(fadedMask);
+		toMerge.push_back(fadedMask);
+		toMerge.push_back(fadedMask);
+		cv::merge(toMerge, output);
+		fadedMask = output;
+	}
+
+	cv::Scalar one = image1F.channels() == 3 ? cv::Scalar(1.0, 1.0, 1.0) : cv::Scalar(1.0);
+
+	//if (_logger->IsEnabled(LogLevel::Trace))
+	//{
+	//	_logger->Trace({ Normalize::Linear(fadedMask, 0.0, 255.0), Normalize::Linear((one - fadedMask), 0.0, 255.0) }, "Faded and non-faded mask");
+	//}
+
+	cv::multiply(image1F, fadedMask, image1F);
+	cv::multiply(image2F, (one - fadedMask), image2F);
+	
+	cv::Mat mergedF = image1F + image2F;
 
 	cv::Mat output;
 
@@ -49,7 +73,7 @@ cv::Mat CrossFade::_getKernel(int width)
 	cv::Mat kernel;
 	cv::distanceTransform(mask, kernel, cv::DistanceTypes::DIST_C, 3, CV_32F);
 
+	auto total = cv::sum(kernel);
 
-
-	return mask;
+	return kernel / total;
 }
