@@ -1,4 +1,5 @@
 #include "BinaryCompositeMenu.hpp"
+#include "..\..\..\src\Subfocal.Core\Utilities\Image\Normalize.hpp"
 
 BinaryCompositeMenu::BinaryCompositeMenu()
 {
@@ -26,7 +27,9 @@ void BinaryCompositeMenu::CrossFadeTest()
 	// imageLogger->Log({ blueberry, blackberry, mask }, "images");
 	auto kernel = crossFade->_getKernel(3);
 
-	imageLogger->Log(kernel, "kernel");
+	cv::Mat displayed;
+	Normalize::Linear(kernel, 0, 255).convertTo(displayed, CV_8UC1);
+	imageLogger->Log(displayed, "kernel");
 
 	auto merged = crossFade->Composite(blueberry, blackberry, mask);
 
