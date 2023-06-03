@@ -25,11 +25,11 @@ void BinaryCompositeMenu::CrossFadeTest()
 	auto mask = std::get<2>(images);
 
 	// imageLogger->Log({ blueberry, blackberry, mask }, "images");
-	auto kernel = crossFade->_getKernel(3);
+	//auto kernel = crossFade->_getKernel(3);
 
-	cv::Mat displayed;
-	Normalize::Linear(kernel, 0, 255).convertTo(displayed, CV_8UC1);
-	imageLogger->Log(displayed, "kernel");
+	//cv::Mat displayed;
+	//Normalize::Linear(kernel, 0, 255).convertTo(displayed, CV_8UC1);
+	//imageLogger->Log(displayed, "kernel");
 
 	auto merged = crossFade->Composite(blueberry, blackberry, mask);
 

@@ -3,6 +3,8 @@
 
 void WindowImageLogger::Log(const cv::Mat& image, const std::string& message)
 {
+	if (image.empty()) return;
+
 	auto width = std::ceil(_screenSizeProvider->GetWidth() * 0.9);
 	auto height = std::ceil(_screenSizeProvider->GetHeight() * 0.9);
 	

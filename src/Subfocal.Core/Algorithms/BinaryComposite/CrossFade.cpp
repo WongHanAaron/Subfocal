@@ -13,9 +13,30 @@ std::string CrossFade::GetComponentName()
 
 cv::Mat CrossFade::Composite(const cv::Mat& image1, const cv::Mat& image2, const cv::Mat& mask1)
 {
+	auto kernel = _getKernel(Width);
+	cv::Mat fadedMask, image1F, image2F;
 
+	image1.convertTo(image1F, CV_32FC1);
+	image2.convertTo(image2F, CV_32FC1);
 
-	return cv::Mat();
+	cv::Mat mask = mask1;
+
+	if (mask.channels() == 3)
+	{
+		cv::cvtColor(mask, mask, cv::COLOR_BGR2GRAY);
+	}
+
+	cv::filter2D(mask1, fadedMask, CV_32FC1, kernel);
+
+	fadedMask = fadedMask / 255.0f;
+
+	cv::Mat mergedF = image1F * fadedMask + image2F * (1.0f - fadedMask);
+
+	cv::Mat output;
+
+	mergedF.convertTo(output, image1.type());
+
+	return output;
 }
 
 cv::Mat CrossFade::_getKernel(int width)

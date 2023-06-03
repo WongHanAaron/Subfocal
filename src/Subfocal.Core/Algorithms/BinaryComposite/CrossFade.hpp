@@ -1,5 +1,6 @@
 #pragma once
 #include "IBinaryComposite.hpp"
+#include "..\..\Utilities\Image\Normalize.hpp"
 
 /// <summary> Binary composite algorithm that </summary>
 class CrossFade : public IBinaryComposite
