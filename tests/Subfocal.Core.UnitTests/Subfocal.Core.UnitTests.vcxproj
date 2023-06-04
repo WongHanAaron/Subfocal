@@ -167,6 +167,7 @@
     <ClCompile Include="Algorithms\SubfocalAlgorithmFactory.Tests.cpp" />
     <ClCompile Include="Algorithms\BinaryComposite.Tests.cpp" />
     <ClCompile Include="Models\Configurable.Tests.cpp" />
+    <ClCompile Include="Utilities\Pyramid.Tests.cpp" />
     <ClCompile Include="Utilities\Montage.Tests.cpp" />
     <ClCompile Include="Utilities\Normalize.Tests.cpp" />
     <ClCompile Include="Utilities\Resize.Tests.cpp" />
