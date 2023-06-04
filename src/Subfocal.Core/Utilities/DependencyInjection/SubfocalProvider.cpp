@@ -12,7 +12,6 @@ void SubfocalProvider::CompleteConstruction()
 	DependencyProvider::AddSingleton(shared_from_base<SubfocalProvider>());
 }
 
-
 void SubfocalProvider::AddLoggingDependencies()
 {
 	DependencyProvider::AddSingleton(std::make_shared<DateTimeProvider>());

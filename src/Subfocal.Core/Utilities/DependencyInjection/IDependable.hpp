@@ -10,6 +10,7 @@ public:
 	virtual std::string GetComponentName() = 0;
 
 protected:
+    
     template <typename Derived>
     inline std::shared_ptr<Derived> shared_from_base()
     {

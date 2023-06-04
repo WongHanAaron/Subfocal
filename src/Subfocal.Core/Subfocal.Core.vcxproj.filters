@@ -48,7 +48,7 @@
     <ClInclude Include="Utilities\DependencyInjection\IDependable.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Utilities\DependencyInjection\DependencyCollection.hpp">
+    <ClInclude Include="Utilities\DependencyInjection\DependencyLoader.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utilities\Environment\DateTimeProvider.hpp">
@@ -119,7 +119,7 @@
     <ClCompile Include="Utilities\Environment\WindowsScreenSizeProvider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Utilities\DependencyInjection\DependencyCollection.cpp">
+    <ClCompile Include="Utilities\DependencyInjection\DependencyLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utilities\Environment\DateTimeProvider.cpp">

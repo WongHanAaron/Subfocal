@@ -7,10 +7,10 @@
 #include "..\Logging\Logger.hpp"
 
 /// <summary> The collection is used to inject dependencies into the injectables </summary>
-class DependencyCollection : public DependencyProvider
+class DependencyLoader : public DependencyProvider
 {
 public:
-	DependencyCollection();
+	DependencyLoader();
 
 protected:
 

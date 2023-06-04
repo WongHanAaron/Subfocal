@@ -1,6 +1,6 @@
 #pragma once
 #include "..\..\stdafx.h"
-#include "DependencyCollection.hpp"
+#include "DependencyLoader.hpp"
 #include "..\Environment\DateTimeProvider.hpp"
 #include "..\Environment\WindowsScreenSizeProvider.hpp"
 #include "..\Logging\ContextStack.hpp"
@@ -8,7 +8,7 @@
 #include "..\..\Algorithms\SubfocalAlgorithmFactory.hpp"
 
 /// <summary> The provider class for all dependencies and injectables in the Subfocal project </summary>
-class SubfocalProvider : public DependencyCollection
+class SubfocalProvider : public DependencyLoader
 {
 public:
 	SubfocalProvider();
@@ -29,7 +29,7 @@ protected:
 
 	void AddAlgorithmFactories();
 
-	// Inherited via DependencyCollection
+	// Inherited via DependencyLoader
 	virtual std::string GetComponentName() override;
 };
 
