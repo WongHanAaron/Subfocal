@@ -15,6 +15,18 @@ void WindowImageLogger::Log(const cv::Mat& image, const std::string& message)
 
 void WindowImageLogger::Log(std::initializer_list<cv::Mat> images, const std::string& message)
 {
+	std::vector<cv::Mat> toMontage;
+
+	for (auto& m : images)
+	{
+		toMontage.push_back(m);
+	}
+
+	Log(toMontage, message);
+}
+
+void WindowImageLogger::Log(std::vector<cv::Mat> images, const std::string& message)
+{
 	auto width = std::ceil(_screenSizeProvider->GetWidth() * 0.9);
 	auto height = std::ceil(_screenSizeProvider->GetHeight() * 0.9);
 

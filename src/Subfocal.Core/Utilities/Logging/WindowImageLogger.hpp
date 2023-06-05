@@ -12,6 +12,8 @@ public:
 
 	virtual void Log(std::initializer_list<cv::Mat> images, const std::string& message = "") override;
 
+	virtual void Log(std::vector<cv::Mat> images, const std::string& message = "") override;
+
 	virtual void Inject(DependencyProvider* provider) override;
 
 protected:

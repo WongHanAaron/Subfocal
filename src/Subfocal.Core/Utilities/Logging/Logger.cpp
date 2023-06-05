@@ -68,6 +68,16 @@ void Logger::Debug(std::initializer_list<cv::Mat> images, const std::string& mes
 	LogIfEnabled(LogLevel::Debug, images, message);
 }
 
+void Logger::Trace(std::vector<cv::Mat> images, const std::string& message)
+{
+	LogIfEnabled(LogLevel::Trace, images, message);
+}
+
+void Logger::Debug(std::vector<cv::Mat> images, const std::string& message)
+{
+	LogIfEnabled(LogLevel::Debug, images, message);
+}
+
 void Logger::LogIfEnabled(enum LogLevel level, const cv::Mat& image, const std::string& message)
 {
 	if (IsEnabled(level))
@@ -77,6 +87,14 @@ void Logger::LogIfEnabled(enum LogLevel level, const cv::Mat& image, const std::
 }
 
 void Logger::LogIfEnabled(enum LogLevel level, std::initializer_list<cv::Mat> images, const std::string& message)
+{
+	if (IsEnabled(level))
+	{
+		_imageLogger->Log(images, GetPrefix(level) + message);
+	}
+}
+
+void Logger::LogIfEnabled(enum LogLevel level, std::vector<cv::Mat> images, const std::string& message)
 {
 	if (IsEnabled(level))
 	{

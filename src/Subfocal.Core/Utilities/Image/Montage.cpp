@@ -3,6 +3,18 @@
 
 cv::Mat Montage::Make(std::initializer_list<cv::Mat> images, int dividerPixels, int maxWidth, int maxHeight, cv::Scalar dividerColor)
 {
+	std::vector<cv::Mat> toMontage;
+
+	for (auto& m : images)
+	{
+		toMontage.push_back(m);
+	}
+
+	return Make(toMontage, dividerPixels, maxWidth, maxHeight, dividerColor);
+}
+
+cv::Mat Montage::Make(std::vector<cv::Mat> images, int dividerPixels, int maxWidth, int maxHeight, cv::Scalar dividerColor)
+{
 	auto maxImageSize = _getMaxImageSize(images);
 
 	auto rowHeightPair = _fitCountToDimensions(images.size(), maxImageSize, maxWidth, maxHeight);
@@ -10,7 +22,7 @@ cv::Mat Montage::Make(std::initializer_list<cv::Mat> images, int dividerPixels, 
 	return _makeProc(images, maxImageSize, rowHeightPair.first, rowHeightPair.second, dividerPixels, maxWidth, maxHeight);
 }
 
-std::tuple<int, int, int> Montage::_getMaxImageSize(std::initializer_list<cv::Mat> images)
+std::tuple<int, int, int> Montage::_getMaxImageSize(std::vector<cv::Mat> images)
 {
 	int maxHeight = 0;
 	int maxWidth = 0;
@@ -68,7 +80,7 @@ cv::Mat Montage::_resizeAndConvert(cv::Mat image, cv::Size imageSize, int type)
 	throw std::invalid_argument("Unable to cast type of " + std::to_string(inputType) + " to " + std::to_string(type));
 }
 
-cv::Mat Montage::_makeProc(std::initializer_list<cv::Mat> images_initializer, std::tuple<int, int, int> maxImageSize, int cols, int rows, int dividerPixels, int maxOutputWidth, int maxOutputHeight, cv::Scalar dividerColor)
+cv::Mat Montage::_makeProc(std::vector<cv::Mat> images_initializer, std::tuple<int, int, int> maxImageSize, int cols, int rows, int dividerPixels, int maxOutputWidth, int maxOutputHeight, cv::Scalar dividerColor)
 {
 	// Default to using the max to define the output size
 	auto images = std::vector<cv::Mat>(images_initializer);

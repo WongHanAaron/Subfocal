@@ -56,8 +56,11 @@ std::vector<cv::Mat> Pyramid::GetLaplacian(const std::vector<cv::Mat> gaussianPy
 		cv::pyrUp(previous, upPyred);
 
 		// Match the size of the upscaled previous layer to the next gaussian layer
+		cv::Mat max = cv::Mat(cv::Size(std::max(previous.cols, upPyred.cols), std::max(previous.rows, upPyred.rows)), previous.type());
 
-		
+		upPyred.copyTo(max(cv::Rect(0, 0, upPyred.cols, upPyred.rows)));
+
+		returned.push_back(max(cv::Rect(0, 0, previous.cols, previous.rows)));
 	}
 
 	return returned;

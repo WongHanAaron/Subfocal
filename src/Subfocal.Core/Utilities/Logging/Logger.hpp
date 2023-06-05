@@ -49,6 +49,9 @@ public:
 	void Trace(std::initializer_list<cv::Mat> images, const std::string& message = "");
 	void Debug(std::initializer_list<cv::Mat> images, const std::string& message = "");
 
+	void Trace(std::vector<cv::Mat> images, const std::string& message = "");
+	void Debug(std::vector<cv::Mat> images, const std::string& message = "");
+
 protected:
 	/// <summary> The method for writing a logging </summary>
 	std::function<void(std::string)> _writeLine;
@@ -73,5 +76,8 @@ protected:
 
 	/// <summary> Writes the image collection log if the log level is enabled </summary>
 	void LogIfEnabled(enum LogLevel level, std::initializer_list<cv::Mat> images, const std::string& message);
+
+	/// <summary> Writes the image collection log if the log level is enabled </summary>
+	void LogIfEnabled(enum LogLevel level, std::vector<cv::Mat> images, const std::string& message);
 };
 
