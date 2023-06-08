@@ -8,7 +8,11 @@
 /// </summary>
 class MultiResolutionSpline : public IBinaryComposite
 {
-	// Inherited via IBinaryComposite
+public:
+	MultiResolutionSpline();
+
+	int Depth;
+
 	virtual std::string GetComponentName() override;
 	virtual cv::Mat Composite(const cv::Mat& image1, const cv::Mat& image2, const cv::Mat& mask) override;
 };

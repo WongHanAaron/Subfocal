@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "MultiResolutionSpline.hpp"
 
+MultiResolutionSpline::MultiResolutionSpline()
+{
+	SetConfigurer("width", [this](double val) -> void { this->Depth = val; });
+}
+
 std::string MultiResolutionSpline::GetComponentName()
 {
 	return "MultiResolutionSpline";
