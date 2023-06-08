@@ -45,7 +45,7 @@ std::vector<cv::Mat> Pyramid::GetLaplacian(const std::vector<cv::Mat> gaussianPy
 
 	for (int i = 1; i < gaussianPyramid.size(); i++)
 	{
-		int index = gaussianPyramid.size() - i;
+		int index = gaussianPyramid.size() - i - 1;
 
 		auto current = gaussianPyramid[index];
 		auto previous = gaussianPyramid[index + 1];
@@ -56,11 +56,13 @@ std::vector<cv::Mat> Pyramid::GetLaplacian(const std::vector<cv::Mat> gaussianPy
 		cv::pyrUp(previous, upPyred);
 
 		// Match the size of the upscaled previous layer to the next gaussian layer
-		cv::Mat max = cv::Mat(cv::Size(std::max(previous.cols, upPyred.cols), std::max(previous.rows, upPyred.rows)), previous.type());
+		cv::Mat max = cv::Mat(cv::Size(std::max(current.cols, upPyred.cols), std::max(current.rows, upPyred.rows)), previous.type());
 
 		upPyred.copyTo(max(cv::Rect(0, 0, upPyred.cols, upPyred.rows)));
 
-		returned.push_back(max(cv::Rect(0, 0, previous.cols, previous.rows)));
+		auto difference = current - max(cv::Rect(0, 0, current.cols, current.rows));
+
+		returned.push_back(difference);
 	}
 
 	return returned;

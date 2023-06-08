@@ -24,7 +24,14 @@ cv::Mat MultiResolutionSpline::Composite(const cv::Mat& image1, const cv::Mat& i
 		_logger->Trace(maskPyramid, "Mask");
 	}
 
+	auto image1Laplacian = Pyramid::GetLaplacian(image1Pyramid);
+	auto image2Laplacian = Pyramid::GetLaplacian(image2Pyramid);
 
+	if (_logger->IsEnabled(LogLevel::Trace))
+	{
+		_logger->Trace(image1Laplacian, "Image1");
+		_logger->Trace(image2Laplacian, "Image2");
+	}
 
 	return cv::Mat();
 }
