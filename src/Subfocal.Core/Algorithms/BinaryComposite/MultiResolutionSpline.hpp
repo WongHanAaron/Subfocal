@@ -1,6 +1,7 @@
 #pragma once
 #include "..\..\stdafx.h"
 #include "IBinaryComposite.hpp"
+#include "..\..\Utilities\Image\Pyramid.hpp"
 
 /// <summary>
 /// Implements the multi-resolution spline proposed by Peter J. Burt and Edward H. Adelson. 

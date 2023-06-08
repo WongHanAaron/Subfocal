@@ -9,8 +9,12 @@ public:
 
 	void CrossFadeTest();
 
+	void MultiResolutionSplineTest();
+
 	virtual std::string GetMenuName() override;
+
+	template <typename BinaryCompositeType>
+	void RunFruitMergeTest(const std::string& algorithmName, Configuration configuration);
 
 	std::tuple<cv::Mat, cv::Mat, cv::Mat> LoadFruitImages();
 };
-

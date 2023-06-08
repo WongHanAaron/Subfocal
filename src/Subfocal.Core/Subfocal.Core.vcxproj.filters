@@ -102,6 +102,9 @@
     <ClInclude Include="Utilities\Image\Pyramid.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Algorithms\BinaryComposite\MultiResolutionSpline.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\String.cpp">
@@ -165,6 +168,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utilities\Image\Pyramid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\BinaryComposite\MultiResolutionSpline.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

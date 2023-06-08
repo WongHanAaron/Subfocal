@@ -1,6 +1,7 @@
 #pragma once
 #include "..\AlgorithmFactoryBase.hpp"
 #include "CrossFade.hpp"
+#include "MultiResolutionSpline.hpp"
 
 class BinaryCompositeFactory : public AlgorithmFactoryBase
 {
