@@ -33,5 +33,7 @@ cv::Mat MultiResolutionSpline::Composite(const cv::Mat& image1, const cv::Mat& i
 		_logger->Trace(image2Laplacian, "Image2");
 	}
 
+
+
 	return cv::Mat();
 }

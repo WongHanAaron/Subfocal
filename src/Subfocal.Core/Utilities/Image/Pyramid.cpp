@@ -65,5 +65,7 @@ std::vector<cv::Mat> Pyramid::GetLaplacian(const std::vector<cv::Mat> gaussianPy
 		returned.push_back(difference);
 	}
 
+	std::reverse(returned.begin(), returned.end());
+
 	return returned;
 }
