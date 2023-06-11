@@ -79,10 +79,10 @@ cv::Mat MultiResolutionSpline::_spline(std::vector<cv::Mat> image1LaplacianPyram
 
 cv::Mat MultiResolutionSpline::_getMaskEdge(cv::Mat thresholdedMask)
 {
-	cv::Mat eroded;
-	cv::erode(thresholdedMask, eroded, _maskStructuringElement);
+	cv::Mat dilated;
+	cv::dilate(thresholdedMask, dilated, _maskStructuringElement);
 
-	cv::Mat edge = thresholdedMask - eroded;
+	cv::Mat edge = dilated - thresholdedMask;
 
 	/*if (_logger->IsEnabled(LogLevel::Trace))
 	{
@@ -102,15 +102,13 @@ cv::Mat MultiResolutionSpline::_createBlendingImage(cv::Mat thresholdedMask, cv:
 	cv::Mat maskFloat;
 	cv::Mat edgeFloat;
 
-	cv::Mat edgeSubtracted = thresholdedMask - maskEdge;
-
-	edgeSubtracted.convertTo(maskFloat, CV_32FC1);
+	thresholdedMask.convertTo(maskFloat, CV_32FC1);
 
 	maskFloat = maskFloat / 255.0f;
 
 	maskEdge.convertTo(edgeFloat, CV_32FC1);
 
-	edgeFloat = edgeFloat / 255.0f;
+	edgeFloat = edgeFloat / 255.0f * 0.5f;
 
 	return maskFloat + edgeFloat;
 }
