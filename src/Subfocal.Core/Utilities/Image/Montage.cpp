@@ -54,7 +54,7 @@ std::pair<int, int> Montage::_fitCountToDimensions(int count, std::tuple<int, in
 
 cv::Mat Montage::_resizeAndConvert(cv::Mat image, cv::Size imageSize, int type)
 {
-	auto resized = Resize::ToFit(image, imageSize, true);
+	auto resized = Resize::ToFit(image, imageSize, true, cv::InterpolationFlags::INTER_NEAREST);
 
 	auto inputType = resized.channels() > 3 ? CV_8UC4 :
 					 resized.channels() > 1 ? CV_8UC3 : CV_8UC1;
