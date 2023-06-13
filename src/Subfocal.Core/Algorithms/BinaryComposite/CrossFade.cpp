@@ -29,7 +29,7 @@ cv::Mat CrossFade::Composite(const cv::Mat& image1, const cv::Mat& image2, const
 	cv::filter2D(mask, fadedMask, CV_32FC1, kernel);
 
 	if (_logger->IsEnabled(LogLevel::Trace))
-		_logger->Trace({ mask, Normalize::Linear(kernel, 0.0, 255.0), fadedMask }, "mask, kernel, fadedMask");
+		_logger->Trace({ image1, image2, mask, Normalize::Linear(kernel, 0.0, 255.0), fadedMask }, "mask, kernel, fadedMask");
 
 	fadedMask = fadedMask / 255.0f;
 

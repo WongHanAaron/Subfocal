@@ -41,7 +41,9 @@ cv::Mat MultiResolutionSpline::_spline(std::vector<cv::Mat> image1LaplacianPyram
 {
 	auto first = image1LaplacianPyramid[0];
 	auto layers = image1LaplacianPyramid.size();
-	auto returned = cv::Mat(first.size(), first.type());
+	auto returned = cv::Mat(first.size(), first.type(), cv::Scalar(0));
+	cv::Mat returnedF;
+	returned.convertTo(returnedF, CV_32F);
 
 	for (int i = 1; i <= layers; i++)
 	{
@@ -58,7 +60,13 @@ cv::Mat MultiResolutionSpline::_spline(std::vector<cv::Mat> image1LaplacianPyram
 
 		auto blendingEdge = _createBlendingImage(thresholdedMask, maskEdge);
 
+		if (image1.channels() == 3 && blendingEdge.channels() != 3)
+		{
+			cv::cvtColor(blendingEdge, blendingEdge, cv::COLOR_GRAY2BGR);
+		}
+
 		auto size = image1.size();
+		cv::Scalar one = image1.channels() == 3 ? cv::Scalar(1.0, 1.0, 1.0) : cv::Scalar(1.0);
 
 		if (_logger->IsEnabled(LogLevel::Trace))
 		{
@@ -71,8 +79,31 @@ cv::Mat MultiResolutionSpline::_spline(std::vector<cv::Mat> image1LaplacianPyram
 							}, "Splice Layer " + std::to_string(index) + ". x: " + std::to_string(size.width) + " y: " + std::to_string(size.height));
 		}
 
+		cv::Mat image1F;
+		cv::Mat image2F;
 
+		image1.convertTo(image1F, CV_32F);
+		image2.convertTo(image2F, CV_32F);
+
+		cv::multiply(image1F, blendingEdge, image1F);
+		cv::multiply(image2F, one - blendingEdge, image2F);
+
+		cv::Mat merged = image1F + image2F;
+
+		cv::Mat resizedMerged;
+		cv::resize(merged, resizedMerged, returnedF.size());
+
+		returnedF = (returnedF + resizedMerged);
+
+		if (_logger->IsEnabled(LogLevel::Trace))
+		{
+			_logger->Trace({ resizedMerged,
+							 returnedF
+				}, "Merged Layer " + std::to_string(index) + ". x: " + std::to_string(size.width) + " y: " + std::to_string(size.height));
+		}
 	}
+
+	returnedF.convertTo(returned, returned.type());
 
 	return returned;
 }
