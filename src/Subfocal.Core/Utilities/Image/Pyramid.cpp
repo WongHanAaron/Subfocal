@@ -69,3 +69,23 @@ std::vector<cv::Mat> Pyramid::GetLaplacian(const std::vector<cv::Mat> gaussianPy
 
 	return returned;
 }
+
+cv::Mat Pyramid::Up(cv::Mat input, int iterations, int borderType)
+{
+	cv::Mat returned = input;
+	for (int i = 0; i < iterations; i++)
+	{
+		cv::pyrUp(returned, returned);
+	}
+	return returned;
+}
+
+cv::Mat Pyramid::Down(cv::Mat input, int iterations, int borderType)
+{
+	cv::Mat returned = input;
+	for (int i = 0; i < iterations; i++)
+	{
+		cv::pyrDown(returned, returned);
+	}
+	return returned;
+}

@@ -91,7 +91,8 @@ cv::Mat MultiResolutionSpline::_spline(std::vector<cv::Mat> image1LaplacianPyram
 		cv::Mat merged = image1F + image2F;
 
 		cv::Mat resizedMerged;
-		cv::resize(merged, resizedMerged, returnedF.size());
+
+		resizedMerged = Pyramid::Up(merged, layers - i);
 
 		returnedF = (returnedF + resizedMerged);
 
