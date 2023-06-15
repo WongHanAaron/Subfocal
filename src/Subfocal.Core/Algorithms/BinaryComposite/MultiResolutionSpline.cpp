@@ -98,8 +98,9 @@ cv::Mat MultiResolutionSpline::_spline(std::vector<cv::Mat> image1LaplacianPyram
 
 		if (_logger->IsEnabled(LogLevel::Trace))
 		{
-			_logger->Trace({ resizedMerged,
-							 returnedF
+			_logger->Trace({ 
+					resizedMerged,
+					returnedF
 				}, "Merged Layer " + std::to_string(index) + ". x: " + std::to_string(size.width) + " y: " + std::to_string(size.height));
 		}
 	}
