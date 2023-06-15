@@ -42,8 +42,8 @@ cv::Mat MultiResolutionSpline::_spline(std::vector<cv::Mat> image1LaplacianPyram
 	auto first = image1LaplacianPyramid[0];
 	auto layers = image1LaplacianPyramid.size();
 	auto returned = cv::Mat(first.size(), first.type(), cv::Scalar(0));
-	cv::Mat returnedF;
-	returned.convertTo(returnedF, CV_32F);
+
+	cv::Mat currentImage;
 
 	for (int i = 1; i <= layers; i++)
 	{
@@ -90,22 +90,26 @@ cv::Mat MultiResolutionSpline::_spline(std::vector<cv::Mat> image1LaplacianPyram
 
 		cv::Mat merged = image1F + image2F;
 
-		cv::Mat resizedMerged;
-
-		resizedMerged = Pyramid::Up(merged, layers - i);
-
-		returnedF = (returnedF + resizedMerged);
+		if (i == 1)
+		{
+			cv::pyrUp(merged, currentImage);
+		}
+		else
+		{
+			currentImage += merged;
+			cv::pyrUp(currentImage, currentImage);
+		}
 
 		if (_logger->IsEnabled(LogLevel::Trace))
 		{
 			_logger->Trace({ 
-					resizedMerged,
-					returnedF
+					merged,
+					currentImage
 				}, "Merged Layer " + std::to_string(index) + ". x: " + std::to_string(size.width) + " y: " + std::to_string(size.height));
 		}
 	}
 
-	returnedF.convertTo(returned, returned.type());
+	currentImage.convertTo(returned, returned.type());
 
 	return returned;
 }

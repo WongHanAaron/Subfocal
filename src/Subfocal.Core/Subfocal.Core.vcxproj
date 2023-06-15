@@ -152,9 +152,12 @@
     <ClInclude Include="Algorithms\BinaryComposite\CrossFade.hpp" />
     <ClInclude Include="Algorithms\BinaryComposite\BinaryCompositeFactory.hpp" />
     <ClInclude Include="Algorithms\BinaryComposite\MultiResolutionSpline.hpp" />
+    <ClInclude Include="Algorithms\Resize\IResize.hpp" />
+    <ClInclude Include="Algorithms\Resize\ContentAwareResize.hpp" />
     <ClInclude Include="Models\Configuration\Configurable.hpp" />
     <ClInclude Include="Models\Configuration\Configuration.hpp" />
     <ClInclude Include="Models\Configuration\Configurer.hpp" />
+    <ClInclude Include="Algorithms\Resize\ResizeFactory.hpp" />
     <ClInclude Include="Utilities\Image\Pyramid.hpp" />
     <ClInclude Include="Utilities\Image\Normalize.hpp" />
     <ClInclude Include="stdafx.h" />
@@ -183,8 +186,10 @@
     <ClCompile Include="Algorithms\BinaryComposite\CrossFade.cpp" />
     <ClCompile Include="Algorithms\BinaryComposite\BinaryCompositeFactory.cpp" />
     <ClCompile Include="Algorithms\BinaryComposite\MultiResolutionSpline.cpp" />
+    <ClCompile Include="Algorithms\Resize\ContentAwareResize.cpp" />
     <ClCompile Include="Models\Configuration\Configurable.cpp" />
     <ClCompile Include="Models\Configuration\Configuration.cpp" />
+    <ClCompile Include="Algorithms\Resize\ResizeFactory.cpp" />
     <ClCompile Include="Utilities\Image\Pyramid.cpp" />
     <ClCompile Include="Utilities\Image\Normalize.cpp" />
     <ClCompile Include="stdafx.cpp">

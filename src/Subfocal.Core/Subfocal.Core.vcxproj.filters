@@ -105,6 +105,15 @@
     <ClInclude Include="Algorithms\BinaryComposite\MultiResolutionSpline.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Algorithms\Resize\IResize.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithms\Resize\ContentAwareResize.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithms\Resize\ResizeFactory.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\String.cpp">
@@ -171,6 +180,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Algorithms\BinaryComposite\MultiResolutionSpline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Resize\ContentAwareResize.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Resize\ResizeFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
