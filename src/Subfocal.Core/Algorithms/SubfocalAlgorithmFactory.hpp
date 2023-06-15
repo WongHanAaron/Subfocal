@@ -1,6 +1,7 @@
 #pragma once
 #include "AlgorithmFactoryBase.hpp"
 #include "BinaryComposite/BinaryCompositeFactory.hpp"
+#include "Resize/ResizeFactory.hpp"
 
 /// <summary> The consolidated algorithm factory for creating all subfocal algorithms </summary>
 class SubfocalAlgorithmFactory : public AlgorithmFactoryBase

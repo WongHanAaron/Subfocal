@@ -5,7 +5,7 @@
 /// <summary>
 /// The interface for an algorithm that resizes the image to the specified size
 /// </summary>
-class IResize : Algorithm
+class IResize : public Algorithm
 {
 public:
 
