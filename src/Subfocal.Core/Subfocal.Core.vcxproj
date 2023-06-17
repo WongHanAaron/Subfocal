@@ -154,6 +154,7 @@
     <ClInclude Include="Algorithms\BinaryComposite\MultiResolutionSpline.hpp" />
     <ClInclude Include="Algorithms\Resize\IResize.hpp" />
     <ClInclude Include="Algorithms\Resize\ContentAwareResize.hpp" />
+    <ClInclude Include="Utilities\Image\Display.hpp" />
     <ClInclude Include="Models\Configuration\Configurable.hpp" />
     <ClInclude Include="Models\Configuration\Configuration.hpp" />
     <ClInclude Include="Models\Configuration\Configurer.hpp" />
@@ -187,6 +188,7 @@
     <ClCompile Include="Algorithms\BinaryComposite\BinaryCompositeFactory.cpp" />
     <ClCompile Include="Algorithms\BinaryComposite\MultiResolutionSpline.cpp" />
     <ClCompile Include="Algorithms\Resize\ContentAwareResize.cpp" />
+    <ClCompile Include="Utilities\Image\Display.cpp" />
     <ClCompile Include="Models\Configuration\Configurable.cpp" />
     <ClCompile Include="Models\Configuration\Configuration.cpp" />
     <ClCompile Include="Algorithms\Resize\ResizeFactory.cpp" />

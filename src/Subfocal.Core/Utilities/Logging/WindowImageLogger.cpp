@@ -42,9 +42,7 @@ void WindowImageLogger::Inject(DependencyProvider* provider)
 
 void WindowImageLogger::DisplayAndWait(cv::Mat image, const std::string& message)
 {
-	cv::imshow(message, image);
-	cv::waitKey(-1);
-	cv::destroyWindow(message);
+	Display::Show(image, message);
 }
 
 std::string WindowImageLogger::GetComponentName()

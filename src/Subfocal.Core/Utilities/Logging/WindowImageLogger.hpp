@@ -2,6 +2,7 @@
 #include "..\..\stdafx.h"
 #include "IImageLogger.hpp"
 #include "../Environment/IScreenSizeProvider.hpp"
+#include "..\Image\Display.hpp"
 
 /// <summary> Implementation of the IImageLogger that displays the image to the screen size </summary>
 class WindowImageLogger : public IImageLogger

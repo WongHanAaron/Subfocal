@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../../../src/Subfocal.Core/Utilities/Image/Pyramid.hpp"
+#include "../../../src/Subfocal.Core/Utilities/Image/Display.hpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -28,6 +29,46 @@ namespace SubfocalCoreUnitTests
 				auto pyramid = Pyramid::GetGaussian(input, input_layers);
 
 				Assert::AreEqual(expected_layers, (int)pyramid.size());
+			}
+		}
+	
+		TEST_METHOD(Laplacian_Pyramid_Reconstructs)
+		{
+			bool debug = true;
+			cv::Mat input = cv::Mat(100, 100, CV_8UC1, cv::Scalar(125));
+
+			for (int i = 0; i < 10; i++)
+			{
+				cv::rectangle(input, cv::Rect(i * 10, 0, 5, 100), 0, -1);
+			}
+			
+			auto pyramid = Pyramid::GetLaplacian(input);
+
+			auto layers = pyramid.size();
+
+			cv::Mat currentImage;
+
+			for (int i = 1; i <= layers; i++)
+			{
+				int index = layers - i;
+
+				auto image = pyramid[index];
+
+				
+				if (i == 1)
+				{
+					cv::pyrUp(image, currentImage);
+				}
+				else
+				{
+					currentImage += image;
+					cv::pyrUp(currentImage, currentImage);
+				}
+
+				if (debug)
+				{
+					Display::Show(currentImage, std::to_string(i));
+				}
 			}
 		}
 	};

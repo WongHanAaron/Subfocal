@@ -25,8 +25,6 @@ namespace SubfocalCoreUnitTests
 			cv::Mat mask = cv::Mat(cv::Size(100, 100), CV_8UC1, cv::Scalar(0));
 			cv::rectangle(mask, cv::Rect(0, 0, 50, 100), cv::Scalar(255), -1);
 
-
-
 			auto composite = algorithm->Composite(img1, img2, mask);
 		}
 	};
