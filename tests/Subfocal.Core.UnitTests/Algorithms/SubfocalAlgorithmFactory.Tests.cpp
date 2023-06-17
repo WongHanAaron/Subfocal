@@ -20,6 +20,7 @@ namespace SubfocalCoreUnitTests
 			Assert::IsNotNull(factory.get());
 
 			auto c = Configuration();
+			c.Numeric["width"] = 100.0;
 
 			auto algorithm = factory->Create("CrossFade", c);
 

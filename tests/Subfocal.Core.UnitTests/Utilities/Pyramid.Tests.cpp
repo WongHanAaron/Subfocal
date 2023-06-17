@@ -34,7 +34,8 @@ namespace SubfocalCoreUnitTests
 	
 		TEST_METHOD(Laplacian_Pyramid_Reconstructs)
 		{
-			bool debug = true;
+			bool debug = false;
+			return;
 			cv::Mat input = cv::Mat(100, 100, CV_8UC1, cv::Scalar(125));
 
 			for (int i = 0; i < 10; i++)

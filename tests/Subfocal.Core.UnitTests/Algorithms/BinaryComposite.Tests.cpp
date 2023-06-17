@@ -17,6 +17,7 @@ namespace SubfocalCoreUnitTests
 			auto factory = provider->GetService<SubfocalAlgorithmFactory>();
 
 			auto c = Configuration();
+			c.Numeric["width"] = 100;
 
 			auto algorithm = factory->Create<CrossFade>("CrossFade", c);
 
