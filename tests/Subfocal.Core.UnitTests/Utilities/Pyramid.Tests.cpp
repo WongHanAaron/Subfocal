@@ -2,6 +2,7 @@
 #include "CppUnitTest.h"
 #include "../../../src/Subfocal.Core/Utilities/Image/Pyramid.hpp"
 #include "../../../src/Subfocal.Core/Utilities/Image/Display.hpp"
+#include "../../../src/Subfocal.Core/Utilities/DependencyInjection/SubfocalProvider.hpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -34,8 +35,10 @@ namespace SubfocalCoreUnitTests
 	
 		TEST_METHOD(Laplacian_Pyramid_Reconstructs)
 		{
-			bool debug = false;
-			return;
+			bool debug = true;
+
+			auto logger = SubfocalProvider::GetImageLogger();
+			
 			cv::Mat input = cv::Mat(100, 100, CV_8UC1, cv::Scalar(125));
 
 			for (int i = 0; i < 10; i++)
@@ -62,14 +65,20 @@ namespace SubfocalCoreUnitTests
 				}
 				else
 				{
+					currentImage = Resize::ToFit(currentImage, image.size(), ResizeMode::Crop);
 					currentImage += image;
 					cv::pyrUp(currentImage, currentImage);
 				}
 
 				if (debug)
 				{
-					Display::Show(currentImage, std::to_string(i));
+					logger->Log({ image, currentImage }, std::to_string(i));
 				}
+			}
+			
+			if (debug)
+			{
+				logger->Log({ input, currentImage }, "Comparison: Input vs CurrentImage");
 			}
 		}
 	};

@@ -20,11 +20,11 @@ namespace SubfocalCoreUnitTests
 			// 6: test_x_black
 			// 7: test_y_black
 			// 8: resize to fit
-			std::vector<std::tuple<int, int, int, int, int, int, int, int, bool>> tests;
-			tests.push_back(std::make_tuple(100, 100, 10, 10, 5, 5, -1, -1, true));
-			tests.push_back(std::make_tuple(100, 100, 20, 20, 10, 10, -1, -1, true));
-			tests.push_back(std::make_tuple(10, 10, 20, 20, 10, 10, -1, -1, true));
-			tests.push_back(std::make_tuple(40, 20, 20, 20, 10, 10, 1, 1, true));
+			std::vector<std::tuple<int, int, int, int, int, int, int, int, ResizeMode>> tests;
+			tests.push_back(std::make_tuple(100, 100, 10, 10, 5, 5, -1, -1, ResizeMode::KeepAspectRatio));
+			tests.push_back(std::make_tuple(100, 100, 20, 20, 10, 10, -1, -1, ResizeMode::KeepAspectRatio));
+			tests.push_back(std::make_tuple(10, 10, 20, 20, 10, 10, -1, -1, ResizeMode::KeepAspectRatio));
+			tests.push_back(std::make_tuple(40, 20, 20, 20, 10, 10, 1, 1, ResizeMode::KeepAspectRatio));
 
 			bool debug = false;
 

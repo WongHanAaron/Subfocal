@@ -12,6 +12,18 @@ void SubfocalProvider::CompleteConstruction()
 	DependencyProvider::AddSingleton(shared_from_base<SubfocalProvider>());
 }
 
+std::shared_ptr<Logger> SubfocalProvider::GetLogger()
+{
+	auto provider = SubfocalProvider::Create();
+	return provider->GetService<Logger>();
+}
+
+std::shared_ptr<IImageLogger> SubfocalProvider::GetImageLogger()
+{
+	auto provider = SubfocalProvider::Create();
+	return provider->GetService<IImageLogger>();
+}
+
 void SubfocalProvider::AddLoggingDependencies()
 {
 	DependencyProvider::AddSingleton(std::make_shared<DateTimeProvider>());

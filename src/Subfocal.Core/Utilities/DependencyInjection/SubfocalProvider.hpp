@@ -23,6 +23,10 @@ public:
 		return c;
 	}
 
+	static std::shared_ptr<Logger> GetLogger();
+
+	static std::shared_ptr<IImageLogger> GetImageLogger();
+
 protected:
 
 	void AddLoggingDependencies();

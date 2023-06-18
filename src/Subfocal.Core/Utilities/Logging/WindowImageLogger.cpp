@@ -8,7 +8,7 @@ void WindowImageLogger::Log(const cv::Mat& image, const std::string& message)
 	auto width = std::ceil(_screenSizeProvider->GetWidth() * 0.9);
 	auto height = std::ceil(_screenSizeProvider->GetHeight() * 0.9);
 	
-	auto toBeShown = Resize::ToFit(image, cv::Size(width, height), true);
+	auto toBeShown = Resize::ToFit(image, cv::Size(width, height), ResizeMode::KeepAspectRatio);
 
 	DisplayAndWait(toBeShown, message);
 }
