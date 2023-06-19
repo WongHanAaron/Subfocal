@@ -41,7 +41,7 @@ cv::Mat MultiResolutionSpline::_spline(std::vector<cv::Mat> image1LaplacianPyram
 {
 	auto first = image1LaplacianPyramid[0];
 	auto layers = image1LaplacianPyramid.size();
-	auto returned = cv::Mat(first.size(), first.type(), cv::Scalar(0));
+	cv::Mat returned = cv::Mat(first.size(), first.type(), cv::Scalar(0));
 
 	cv::Mat currentImage;
 
@@ -109,7 +109,11 @@ cv::Mat MultiResolutionSpline::_spline(std::vector<cv::Mat> image1LaplacianPyram
 		}
 	}
 
+	cv::threshold(currentImage, currentImage, 255, 255, cv::ThresholdTypes::THRESH_TRUNC);
+
 	currentImage.convertTo(returned, returned.type());
+
+	_logger->Trace({ currentImage, returned }, "Returned Image");
 
 	return returned;
 }
