@@ -1,5 +1,6 @@
 #pragma once
 #include "IResize.hpp"
+#include "..\..\Models\Resize\Seam.hpp"
 
 class ContentAwareResize : public IResize
 {
@@ -9,8 +10,19 @@ public:
 	
 	virtual cv::Mat Resize(cv::Mat input, cv::Size size) override;
 
-	cv::Mat _calculateImageEnergy(cv::Mat image);
+	/// <summary> Returns if the current image still needs a resize </summary>
+	bool _needResize(cv::Mat currentImage, cv::Size targetSize);
 
-	cv::Mat _calculateSobelImageEnergy(cv::Mat image);
+	/// <summary> Finds a seam in the X direction </summary>
+	Seam _findSeamInX(cv::Mat energy);
+
+	/// <summary> Finds a seam in the Y direction </summary>
+	Seam _findSeamInY(cv::Mat energy);
+
+	/// <summary> Returns the image energy </summary>
+	std::tuple<cv::Mat, cv::Mat> _calculateImageEnergy(cv::Mat image);
+
+	/// <summary> Returns the image energy from the sobel edge </summary>
+	std::tuple<cv::Mat, cv::Mat> _calculateSobelImageEnergy(cv::Mat image);
 };
 
