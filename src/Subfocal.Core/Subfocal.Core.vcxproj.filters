@@ -108,7 +108,7 @@
     <ClInclude Include="Algorithms\Resize\IResize.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Algorithms\Resize\ContentAwareResize.hpp">
+    <ClInclude Include="Algorithms\Resize\SeamCarvingResize.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Algorithms\Resize\ResizeFactory.hpp">
@@ -127,6 +127,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utilities\Image\Edge.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\Resize\Seam.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -197,7 +200,7 @@
     <ClCompile Include="Algorithms\BinaryComposite\MultiResolutionSpline.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Algorithms\Resize\ContentAwareResize.cpp">
+    <ClCompile Include="Algorithms\Resize\SeamCarvingResize.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Algorithms\Resize\ResizeFactory.cpp">
@@ -213,6 +216,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utilities\Image\Edge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Models\Resize\Seam.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

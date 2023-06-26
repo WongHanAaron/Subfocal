@@ -3,12 +3,17 @@
 #include "..\..\Utilities\Image\Edge.hpp"
 #include "..\..\Models\Resize\Seam.hpp"
 
-class ContentAwareResize : public IResize
+/// <summary>
+/// Content aware resize as described in the paper "Seam Carving for Content-Aware Image Resizing"
+/// by Shai Avidan
+/// </summary>
+class SeamCarvingResize : public IResize
 {
 public:
 
-	ContentAwareResize();
+	SeamCarvingResize();
 
+	/// <summary> The kernel width for the sobel operation </summary>
 	int SobelWidth = 3;
 
 	// Inherited via IResize

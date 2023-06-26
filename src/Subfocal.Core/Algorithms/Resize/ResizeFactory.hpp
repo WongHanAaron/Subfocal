@@ -1,6 +1,6 @@
 #pragma once
 #include "..\AlgorithmFactoryBase.hpp"
-#include "ContentAwareResize.hpp"
+#include "SeamCarvingResize.hpp"
 
 /// <summary> Algorithm for creating all resize algorithm operations </summary>
 class ResizeFactory : public AlgorithmFactoryBase

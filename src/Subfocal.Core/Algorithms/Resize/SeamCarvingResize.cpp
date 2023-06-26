@@ -1,17 +1,17 @@
 #include "stdafx.h"
-#include "ContentAwareResize.hpp"
+#include "SeamCarvingResize.hpp"
 
-ContentAwareResize::ContentAwareResize()
+SeamCarvingResize::SeamCarvingResize()
 {
     SetConfigurer("sobelwidth", [this](double val) -> void { this->SobelWidth = val; });
 }
 
-std::string ContentAwareResize::GetComponentName()
+std::string SeamCarvingResize::GetComponentName()
 {
-    return "ContentAwareResize";
+    return "SeamCarvingResize";
 }
 
-cv::Mat ContentAwareResize::Resize(cv::Mat input, cv::Size size)
+cv::Mat SeamCarvingResize::Resize(cv::Mat input, cv::Size size)
 {
     cv::Mat currentImage = input;
     
@@ -30,27 +30,27 @@ cv::Mat ContentAwareResize::Resize(cv::Mat input, cv::Size size)
     return cv::Mat();
 }
 
-bool ContentAwareResize::_needResize(cv::Mat currentImage, cv::Size size)
+bool SeamCarvingResize::_needResize(cv::Mat currentImage, cv::Size size)
 {
     return currentImage.rows != size.width || currentImage.cols != size.height;
 }
 
-Seam ContentAwareResize::_findSeamInX(cv::Mat energy)
+Seam SeamCarvingResize::_findSeamInX(cv::Mat energy)
 {
     return Seam();
 }
 
-Seam ContentAwareResize::_findSeamInY(cv::Mat energy)
+Seam SeamCarvingResize::_findSeamInY(cv::Mat energy)
 {
     return Seam();
 }
 
-std::tuple<cv::Mat, cv::Mat> ContentAwareResize::_calculateImageEnergy(cv::Mat image)
+std::tuple<cv::Mat, cv::Mat> SeamCarvingResize::_calculateImageEnergy(cv::Mat image)
 {
     return _calculateSobelImageEnergy(image);
 }
 
-std::tuple<cv::Mat, cv::Mat> ContentAwareResize::_calculateSobelImageEnergy(cv::Mat image)
+std::tuple<cv::Mat, cv::Mat> SeamCarvingResize::_calculateSobelImageEnergy(cv::Mat image)
 {
     cv::Mat input = image;
 

@@ -154,9 +154,10 @@
     <ClInclude Include="Algorithms\BinaryComposite\MultiResolutionSpline.hpp" />
     <ClInclude Include="Algorithms\OpticalFlow\IOpticalFlow.hpp" />
     <ClInclude Include="Algorithms\Resize\IResize.hpp" />
-    <ClInclude Include="Algorithms\Resize\ContentAwareResize.hpp" />
+    <ClInclude Include="Algorithms\Resize\SeamCarvingResize.hpp" />
     <ClInclude Include="Algorithms\OpticalFlow\OpticalFlowFactory.hpp" />
     <ClInclude Include="Algorithms\OpticalFlow\HornSchunckOpticalFlow.hpp" />
+    <ClInclude Include="Models\Resize\Seam.hpp" />
     <ClInclude Include="Utilities\Image\Edge.hpp" />
     <ClInclude Include="Utilities\Image\Display.hpp" />
     <ClInclude Include="Models\Configuration\Configurable.hpp" />
@@ -191,9 +192,10 @@
     <ClCompile Include="Algorithms\BinaryComposite\CrossFade.cpp" />
     <ClCompile Include="Algorithms\BinaryComposite\BinaryCompositeFactory.cpp" />
     <ClCompile Include="Algorithms\BinaryComposite\MultiResolutionSpline.cpp" />
-    <ClCompile Include="Algorithms\Resize\ContentAwareResize.cpp" />
+    <ClCompile Include="Algorithms\Resize\SeamCarvingResize.cpp" />
     <ClCompile Include="Algorithms\OpticalFlow\OpticalFlowFactory.cpp" />
     <ClCompile Include="Algorithms\OpticalFlow\HornSchunckOpticalFlow.cpp" />
+    <ClCompile Include="Models\Resize\Seam.cpp" />
     <ClCompile Include="Utilities\Image\Edge.cpp" />
     <ClCompile Include="Utilities\Image\Display.cpp" />
     <ClCompile Include="Models\Configuration\Configurable.cpp" />

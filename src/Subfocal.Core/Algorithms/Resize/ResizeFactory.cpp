@@ -3,7 +3,7 @@
 
 ResizeFactory::ResizeFactory()
 {
-    _addAlgorithmFactory<ContentAwareResize>();
+    _addAlgorithmFactory<SeamCarvingResize>();
 }
 
 std::string ResizeFactory::GetComponentName()
