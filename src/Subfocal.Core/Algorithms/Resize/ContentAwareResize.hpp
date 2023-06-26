@@ -1,10 +1,16 @@
 #pragma once
 #include "IResize.hpp"
+#include "..\..\Utilities\Image\Edge.hpp"
 #include "..\..\Models\Resize\Seam.hpp"
 
 class ContentAwareResize : public IResize
 {
 public:
+
+	ContentAwareResize();
+
+	int SobelWidth = 3;
+
 	// Inherited via IResize
 	virtual std::string GetComponentName() override;
 	

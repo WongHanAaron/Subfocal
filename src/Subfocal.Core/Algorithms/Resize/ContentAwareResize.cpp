@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "ContentAwareResize.hpp"
 
+ContentAwareResize::ContentAwareResize()
+{
+    SetConfigurer("sobelwidth", [this](double val) -> void { this->SobelWidth = val; });
+}
+
 std::string ContentAwareResize::GetComponentName()
 {
     return "ContentAwareResize";
@@ -30,6 +35,16 @@ bool ContentAwareResize::_needResize(cv::Mat currentImage, cv::Size size)
     return currentImage.rows != size.width || currentImage.cols != size.height;
 }
 
+Seam ContentAwareResize::_findSeamInX(cv::Mat energy)
+{
+    return Seam();
+}
+
+Seam ContentAwareResize::_findSeamInY(cv::Mat energy)
+{
+    return Seam();
+}
+
 std::tuple<cv::Mat, cv::Mat> ContentAwareResize::_calculateImageEnergy(cv::Mat image)
 {
     return _calculateSobelImageEnergy(image);
@@ -37,7 +52,22 @@ std::tuple<cv::Mat, cv::Mat> ContentAwareResize::_calculateImageEnergy(cv::Mat i
 
 std::tuple<cv::Mat, cv::Mat> ContentAwareResize::_calculateSobelImageEnergy(cv::Mat image)
 {
-    return std::make_tuple(cv::Mat(), cv::Mat());
+    cv::Mat input = image;
+
+    if (input.channels() > 1)
+    {
+        cv::cvtColor(input, input, cv::COLOR_BGR2GRAY);
+    }
+
+    auto edge = Edge::Sobel(input, CV_32F, SobelWidth);
+
+    cv::Mat xEdge = cv::abs(std::get<0>(edge));
+    cv::Mat yEdge = cv::abs(std::get<1>(edge));
+
+    cv::Mat output;
+    cv::addWeighted(xEdge, 0.5, yEdge, 0.5, 0, output);
+
+    return std::make_tuple(output, output);
 }
 
 
