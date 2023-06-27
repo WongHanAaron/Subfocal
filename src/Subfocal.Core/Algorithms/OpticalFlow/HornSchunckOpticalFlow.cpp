@@ -3,6 +3,7 @@
 
 HornSchunckOpticalFlow::HornSchunckOpticalFlow()
 {
+    SetConfigurer("width", [this](double val) -> void { this->Width = val; });
 }
 
 std::string HornSchunckOpticalFlow::GetComponentName()

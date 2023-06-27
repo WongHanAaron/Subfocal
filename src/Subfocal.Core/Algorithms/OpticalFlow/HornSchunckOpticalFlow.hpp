@@ -10,6 +10,9 @@ public:
 
 	HornSchunckOpticalFlow();
 
+	/// <summary> Width of the smoothness criteria </summary>
+	int Width;
+
 	// Inherited via Algorithm
 	virtual std::string GetComponentName() override;
 
