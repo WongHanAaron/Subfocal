@@ -164,6 +164,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Algorithms\Resize.Tests.cpp" />
     <ClCompile Include="Algorithms\SubfocalAlgorithmFactory.Tests.cpp" />
     <ClCompile Include="Algorithms\BinaryComposite.Tests.cpp" />
     <ClCompile Include="Models\Configurable.Tests.cpp" />
