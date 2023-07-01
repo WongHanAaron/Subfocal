@@ -1,5 +1,6 @@
 #pragma once
 #include "IOpticalFlow.hpp"
+#include "..\..\Utilities\Image\Edge.hpp"
 
 /// <summary>
 /// Implementation of the Horn-Schnuck Optical Flow Algorithm
