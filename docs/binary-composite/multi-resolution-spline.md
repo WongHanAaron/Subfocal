@@ -1,5 +1,9 @@
 # Multi-Resolution Spline
 
+The multi-resolution spline is an algorithm that takes two images and blends both images by performing cross-fade blends at multiple levels of the Laplacian pyramid. By blending the images at multiple levels of the Laplacian pyramid, this blending algorithm essentially performs a cross fade between the two images at a different rate for each frequency band of image features in the Fourier domain. 
+
+The regions to be kept from either image is selected through a binary image mask. 
+
 
 
 ## References
