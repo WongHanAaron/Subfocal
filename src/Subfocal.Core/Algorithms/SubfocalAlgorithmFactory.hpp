@@ -2,6 +2,7 @@
 #include "AlgorithmFactoryBase.hpp"
 #include "BinaryComposite/BinaryCompositeFactory.hpp"
 #include "Resize/ResizeFactory.hpp"
+#include "Segmentation/SegmentationFactory.hpp"
 
 /// <summary> The consolidated algorithm factory for creating all subfocal algorithms </summary>
 class SubfocalAlgorithmFactory : public AlgorithmFactoryBase

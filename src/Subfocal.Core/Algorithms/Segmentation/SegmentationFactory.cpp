@@ -3,6 +3,7 @@
 
 SegmentationFactory::SegmentationFactory()
 {
+	_addAlgorithmFactory<KnnSegmentation>();
 }
 
 std::string SegmentationFactory::GetComponentName()

@@ -5,6 +5,7 @@ SubfocalAlgorithmFactory::SubfocalAlgorithmFactory()
 {
 	AddAlgorithmFactory<BinaryCompositeFactory>();
 	AddAlgorithmFactory<ResizeFactory>();
+	AddAlgorithmFactory<SegmentationFactory>();
 }
 
 std::shared_ptr<Algorithm> SubfocalAlgorithmFactory::Create(const std::string& algorithmName, Configuration config)
